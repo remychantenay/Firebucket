@@ -7,8 +7,6 @@
 -dontwarn
 -dontshrink
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
--libraryjars /Users/remychantenay/Documents/workspace/Firebucket/mobile/libs
--keepdirectories /Users/remychantenay/Documents/workspace/Firebucket/mobile/libs
 -libraryjars <java.home>/lib/rt.jar
 #-keep public class * extends android.app.Activity
 #-keep public class * extends android.app.Application
