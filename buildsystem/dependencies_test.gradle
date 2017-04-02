@@ -1,0 +1,41 @@
+// This gradle file must be applied in each module
+// e.g. "apply from: '../buildsystem/dependencies_test.gradle to the top of the build.gradle module files
+dependencies {
+
+    compile "junit:junit:$rootProject.JUNIT_VERSION"
+    compile("org.mockito:mockito-core:$rootProject.MOCKITO_VERSION") {
+        exclude module: 'support-v4'
+        exclude module: 'support-annotations'
+        exclude module: 'assertj'
+    }
+
+    compile("com.android.support.test:rules:$rootProject.RUNNER_VERSION") {
+        exclude module: 'support-v4'
+        exclude module: 'support-annotations'
+    }
+
+    compile("com.android.support.test:runner:$rootProject.RUNNER_VERSION") {
+        exclude module: 'support-annotations'
+    }
+
+    compile("com.android.support.test.espresso:espresso-core:$rootProject.ESPRESSO_VERSION") {
+        exclude module: 'testing-support-lib'
+        exclude module: 'support-v4'
+        exclude module: 'support-annotations'
+        exclude group: 'javax.inject'
+    }
+    compile("com.android.support.test.espresso:espresso-contrib:$rootProject.ESPRESSO_VERSION") {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+
+    compile "com.android.support.test.espresso:espresso-intents:$rootProject.ESPRESSO_VERSION"
+    compile ("org.assertj:assertj-core:$rootProject.ASSERTJ_VERSION") {
+        exclude module: 'mockito-core'
+    }
+/*    compile "com.crittercism.dexmaker:dexmaker:$rootProject.DEXMAKER_VERSION"
+    compile "com.crittercism.dexmaker:dexmaker-dx:$rootProject.DEXMAKER_VERSION"
+    compile "com.crittercism.dexmaker:dexmaker-mockito:$rootProject.DEXMAKER_VERSION"*/
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material Design related -->
+    <color name="colorPrimary">#c63a3a</color>
+    <color name="colorPrimaryDark">#a12f2f</color>
+    <color name="colorAccent">#ffcb2b</color>
+
+    <!--Other-->
+    <color name="colorRipple">#e5e5e5</color>
+    <color name="transparent">#00000000</color>
+    <color name="colorBlackOverlay">#64000000</color>
+    <color name="colorBackground">#EEEEEE</color>
+
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_400">#BDBDBD</color>
+    <color name="green_400">#66BB6A</color>
+
+    <color name="white">@android:color/white</color>
+
+    <!-- Collapsing Toolbar background -->
+    <color name="collapsing_toolbar_background_opacity">#b93F51B5</color>
+
+    <!-- Fingerprint Authentication icon colors -->
+    <color name="fingerprint_icon_color_background_top">@color/colorPrimary</color>
+    <color name="fingerprint_icon_color_background_bottom">@color/colorPrimaryDark</color>
+    <color name="fingerprint_icon_color_success">@color/gru_google_logo_green</color>
+    <color name="fingerprint_icon_color_fail">@color/gru_google_logo_red</color>
+
+    <!--TaskModel priorities-->
+    <color name="taskPriorityLow">#4CAF50</color>
+    <color name="taskPriorityNormal">#FFEB3B</color>
+    <color name="taskPriorityHigh">#FF9800</color>
+    <color name="taskPriorityCrucial">#F44336</color>
+</resources>

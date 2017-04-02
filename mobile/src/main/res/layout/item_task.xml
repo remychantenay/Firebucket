@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.cremy.firebucket.presentation.ui.viewmodels.TaskViewModel" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="@dimen/material_design_keyline_one"
+        tools:background="@android:color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/textView"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/BucketItemTaskTitle"
+                    android:text="@{viewModel.getTaskTitle}"
+                    tools:text="Item title" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/material_design_keyline_three"
+                    android:orientation="horizontal">
+
+                    <com.cremy.firebucket.presentation.ui.widgets.RoundedCornerLayout
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="@dimen/material_design_keyline_two"
+                        android:background="@{viewModel.getTaskPriorityColor}"
+                        tools:background="@color/taskPriorityNormal" />
+
+                    <TextView
+                        style="@style/BucketItemTaskSubtitle"
+                        android:text="@{viewModel.getTaskPriorityLabel}"
+                        tools:text="Item subtitle" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/BucketItemTaskTag"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@{viewModel.getTaskTag}"
+                android:visibility="@{viewModel.hasTag()?0:8}"
+                tools:text="Tag"
+                tools:visibility="visible" />
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

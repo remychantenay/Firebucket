@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="vector_fingerprint_viewport_width">160</integer>
+    <integer name="vector_fingerprint_viewport_height">160</integer>
+    <integer name="vector_fingerprint_viewport_center">80</integer>
+    <integer name="vector_fingerprint_stroke_width">5</integer>
+    <integer name="vector_tick_cross_stroke_width">7</integer>
+
+    <integer name="vector_fingerprint_small_viewport_width">160</integer>
+    <integer name="vector_fingerprint_small_viewport_height">160</integer>
+    <integer name="vector_fingerprint_small_viewport_center">80</integer>
+</resources>

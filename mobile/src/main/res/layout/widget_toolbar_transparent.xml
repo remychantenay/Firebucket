@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.cremy.firebucket.presentation.ui.widgets.CustomToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Toolbar.Transparent"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:minHeight="?attr/actionBarSize"
+    app:layout_collapseMode="pin">
+
+</com.cremy.firebucket.presentation.ui.widgets.CustomToolbar>

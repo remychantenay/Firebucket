@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Firebucket</string>
+
+    <string name="no_network">Please, check your connection</string>
+    <string name="retry">RETRY</string>
+    <string name="done">DONE</string>
+    <string name="cancel">CANCEL</string>
+
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="general_progress_dialog_title">Loading</string>
+    <string name="general_progress_dialog_content">Please wait...</string>
+
+    <string name="priority">Priority: %1$s</string>
+
+    <!-- Create TaskModel -->
+    <string name="hint_task_title">Task title</string>
+
+    <string name="create_task_option_item_deadline_title">Deadline</string>
+    <string name="create_task_option_item_priority_title">Priority</string>
+    <string name="create_task_option_item_tags_title">Tags</string>
+    <string name="create_task_option_item_deadline_value_default">Today</string>
+    <string name="create_task_option_item_priority_value_default">Normal</string>
+    <string name="create_task_option_item_tags_value_default">No tag selected</string>
+
+    <!-- Login -->
+    <string name="login">Login</string>
+    <string name="login_cta">Sign In</string>
+    <string name="hint_email_address">Email address</string>
+    <string name="hint_password">Password</string>
+
+    <!-- OnBoarding -->
+    <string name="onboarding_title">Get shit done with Firebucket!</string>
+    <string name="onboarding_cta_register">Create an account</string>
+
+    <!-- Registration -->
+    <string name="register">Create an account</string>
+    <string name="register_cta">Register</string>
+
+    <!-- Errors -->
+    <string name="error_firebase_auth_login">Oops, an error occurred while trying to Login.</string>
+    <string name="error_firebase_auth_register">Oops, an error occurred while trying to register.</string>
+    <string name="error_login_invalid_email">Please provide a valid email address</string>
+    <string name="error_login_invalid_password">Please provide a valid password</string>
+    <string name="error_create_task">Oops, something went wrong while creating the task.</string>
+    <string name="error_create_task_date_picking_too_early">Only Marty McFly can come back in the past.</string>
+    <string name="error_create_task_invalid_title">Please, provide a title for the task.</string>
+    <string name="error_create_task_voice_recognition_error_code">Oops, error %1$d</string>
+    <string name="error_create_task_voice_recognition">Oops, something went wrong while trying to understand what you said.</string>
+    <string name="error_create_task_get_tags">Oops, something went wrong while trying to get the tags.</string>
+
+    <!-- Bucket -->
+    <string name="bucket_activity_placeholder_button_text">TRY AGAIN</string>
+    <string name="bucket_placeholder_empty_title">Congrats, your bucket list is empty!</string>
+    <string name="bucket_placeholder_empty_first_time_title">Welcome!\nDon\'t be shy and start by creating a task!</string>
+    <string name="bucket_placeholder_error_title">Oops, an error occurred while getting your Bucket.</string>
+</resources>

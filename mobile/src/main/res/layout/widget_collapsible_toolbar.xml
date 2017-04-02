@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:id="@+id/collapsing_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:contentScrim="?attr/colorPrimaryDark"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <ImageView
+            android:id="@+id/collapsing_toolbar_background_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/colorPrimaryDark"
+            android:fitsSystemWindows="true"
+            android:scaleType="fitXY"
+            app:layout_collapseMode="parallax" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/collapsing_toolbar_background_opacity"
+            android:fitsSystemWindows="true" />
+
+
+        <FrameLayout
+            android:id="@+id/collapsing_toolbar_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_small">
+            <!-- ############################################ -->
+            <!-- Content will be dynamically inflated here... -->
+            <!-- ############################################ -->
+        </FrameLayout>
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/widget_toolbar_transparent" />
+
+    </android.support.design.widget.CollapsingToolbarLayout>
+</merge>

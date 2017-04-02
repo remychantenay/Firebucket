@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="task_priority_labels">
+        <item>Low</item>
+        <item>Normal</item>
+        <item>High</item>
+        <item>Crucial</item>
+    </string-array>
+</resources>

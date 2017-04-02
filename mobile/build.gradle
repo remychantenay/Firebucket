@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+apply from: '../buildsystem/dependencies.gradle'
+apply from: '../buildsystem/dependencies_test.gradle'
+
+
+android {
+    publishNonDefault true
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
+
+    aaptOptions {
+        /*
+         * Note: disable the cruncher if you are already using an external tool
+         * (e.g. ImageAlpha/pngquant) to optimize your assets
+         */
+        cruncherEnabled = false
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(System.getenv("ANDROID_KEYSTORE") ?: "null")
+            storePassword System.getenv("ANDROID_STORE_PASSWORD") ?: ""
+            keyAlias System.getenv("ANDROID_KEY_ALIAS") ?: ""
+            keyPassword System.getenv("ANDROID_KEY_PASSWORD") ?: ""
+        }
+        debug {
+            storeFile file("../buildsystem/debug.keystore")
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 23
+        multiDexEnabled true
+
+        applicationId rootProject.PACKAGE_NAME
+        versionCode rootProject.VERSION_CODE_MOBILE
+        versionName rootProject.VERSION_NAME_MOBILE
+        // Test intrumentation runner
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            shrinkResources false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "LOG", "false"
+        }
+
+        debug {
+            versionNameSuffix = rootProject.PACKAGE_NAME_DEV_SUFFIX
+
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "LOG", "true"
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/MANIFEST.MF'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'com.google.gms.google-services'

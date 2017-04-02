@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/fingerprint_state_icon_size"
+    android:height="@dimen/fingerprint_state_icon_size"
+    android:viewportWidth="@integer/vector_fingerprint_viewport_width"
+    android:viewportHeight="@integer/vector_fingerprint_viewport_height">
+
+    <group
+        android:name="fingerprint"
+        android:pivotX="@integer/vector_fingerprint_viewport_center"
+        android:pivotY="@integer/vector_fingerprint_viewport_center">
+
+        <path
+            android:name="ridge_1"
+            android:pathData="@string/path_fingerprint_ridge_1"
+            android:strokeColor="@color/white"
+            android:strokeLineCap="round"
+            android:strokeWidth="@integer/vector_fingerprint_stroke_width" />
+
+        <path
+            android:name="ridge_2"
+            android:pathData="@string/path_fingerprint_ridge_2"
+            android:strokeColor="@color/white"
+            android:strokeLineCap="round"
+            android:strokeWidth="@integer/vector_fingerprint_stroke_width" />
+
+        <path
+            android:name="ridge_3"
+            android:pathData="@string/path_fingerprint_ridge_3"
+            android:strokeColor="@color/white"
+            android:strokeLineCap="round"
+            android:strokeWidth="@integer/vector_fingerprint_stroke_width" />
+
+        <path
+            android:name="ridge_4"
+            android:pathData="@string/path_fingerprint_ridge_4"
+            android:strokeColor="@color/white"
+            android:strokeLineCap="round"
+            android:strokeWidth="@integer/vector_fingerprint_stroke_width" />
+
+        <path
+            android:name="ridge_5"
+            android:pathData="@string/path_fingerprint_ridge_5"
+            android:strokeColor="@color/white"
+            android:strokeLineCap="round"
+            android:strokeWidth="@integer/vector_fingerprint_stroke_width" />
+
+    </group>
+</vector>

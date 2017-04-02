@@ -1,0 +1,60 @@
+// This gradle file must be applied in each module
+// e.g. "apply from: '../buildsystem/dependencies.gradle to the top of the build.gradle module files
+dependencies {
+
+    //region Java Poet
+    annotationProcessor "com.squareup:javapoet:$rootProject.JAVA_POET_VERSION"
+    //endregion
+
+    //region Dagger2
+    def daggerCompiler = "com.google.dagger:dagger-compiler:$rootProject.DAGGER_VERSION"
+    annotationProcessor daggerCompiler
+    testAnnotationProcessor daggerCompiler
+
+    compile  "com.google.dagger:dagger:$rootProject.DAGGER_VERSION"
+    provided "org.glassfish:javax.annotation:$rootProject.GLASSFISH_JAVAX_ANNOTATION" //Required by Dagger2
+    //endregion
+
+    //region Support libraries
+    compile "com.android.support:appcompat-v7:$rootProject.SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:design:$rootProject.SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:recyclerview-v7:$rootProject.SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:cardview-v7:$rootProject.SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:palette-v7:$rootProject.SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:support-annotations:$rootProject.SUPPORT_LIBRARY_VERSION"
+    //endregion
+
+    //region ButterKnife
+    compile ("com.jakewharton:butterknife:$rootProject.BUTTERKNIFE_VERSION") {
+        exclude module: 'support-annotations'
+    }
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.BUTTERKNIFE_VERSION"
+    //endregion
+
+    //region RxJava, RxAndroid
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.RXANDROID_VERSION"
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.RXJAVA_VERSION"
+    //endregion
+
+    //region GreenRobotUtils
+    // https://github.com/remychantenay/GreenRobotUtils
+    compile "com.github.remychantenay:greenrobotutils:$rootProject.GREEN_ROBOT_UTILS_VERSION"
+    //endregion
+
+    //region StickyHeaders
+    compile "com.timehop.stickyheadersrecyclerview:library:${rootProject.STICKY_HEADERS_LIB_VERSION}@aar"
+    //endregion
+
+    //region Firebase
+    compile "com.google.firebase:firebase-core:$rootProject.FIREBASE_VERSION"
+    compile "com.google.firebase:firebase-database:$rootProject.FIREBASE_VERSION"
+    compile "com.google.firebase:firebase-auth:$rootProject.FIREBASE_VERSION"
+    compile "com.google.firebase:firebase-crash:$rootProject.FIREBASE_VERSION"
+    compile "com.google.firebase:firebase-config:$rootProject.FIREBASE_VERSION"
+    compile "com.google.firebase:firebase-messaging:$rootProject.FIREBASE_VERSION"
+    //endregion
+
+    //region GSON
+    compile "com.google.code.gson:gson:$rootProject.GSON_VERSION"
+    //endregion
+}

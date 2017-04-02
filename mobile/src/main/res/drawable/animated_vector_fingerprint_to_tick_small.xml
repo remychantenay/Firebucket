@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/vector_fingerprint_small">
+
+    <target
+        android:name="ridge_1"
+        android:animation="@animator/fingerprint_hide_ridge" />
+
+    <target
+        android:name="ridge_2"
+        android:animation="@animator/fingerprint_morph_ridge_2_to_tick" />
+
+    <target
+        android:name="ridge_3"
+        android:animation="@animator/fingerprint_hide_ridge" />
+
+    <target
+        android:name="ridge_4"
+        android:animation="@animator/fingerprint_hide_ridge" />
+
+    <target
+        android:name="ridge_5"
+        android:animation="@animator/fingerprint_hide_ridge" />
+
+</animated-vector>

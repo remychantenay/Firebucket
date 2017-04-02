@@ -1,0 +1,10 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.cremy.firebucket.presentation.ui.widgets.CustomAppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_collapsing_height_normal"
+        android:fitsSystemWindows="true" />
+</merge>

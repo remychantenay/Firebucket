@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="transition_logo_onboarding_to_login_and_register">transition_logo</string>
+</resources>

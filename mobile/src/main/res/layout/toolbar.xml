@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    style="@style/MaterialDesignTheme.ToolBarPrimary"
+    android:elevation="@dimen/material_design_toolbar_elevation">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="left"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="@dimen/material_design_keyline_two"
+            android:src="@drawable/image_logo_bucket"
+            android:gravity="center_vertical"/>
+        <TextView
+            style="@style/MaterialDesignTheme.ToolBarPrimary.Title"
+            android:id="@+id/toolbarTitle"
+            android:text="@string/app_name"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.Toolbar>

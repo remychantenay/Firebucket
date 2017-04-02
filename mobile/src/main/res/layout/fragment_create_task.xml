@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cremy.firebucket.presentation.ui.activities.CreateTaskActivity">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/material_design_toolbar_elevation">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_create_task_extended_toolbar_height"
+                android:background="@color/colorPrimary"
+                android:minHeight="?android:attr/actionBarSize"
+                android:theme="@style/AppTheme.NoActionBar" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/text_input_layout_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/cta_speech"
+                    android:layout_toStartOf="@+id/cta_speech">
+
+                    <android.support.design.widget.TextInputEditText
+                        style="@style/CreateTaskEditTextTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/material_design_keyline_one"
+                        android:hint="@string/hint_task_title" />
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/cta_speech"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/material_design_keyline_one"
+                    android:src="@drawable/ic_audio_record_white" />
+            </RelativeLayout>
+
+
+        </FrameLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/cta_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/material_design_keyline_one"
+        android:clickable="true"
+        android:src="@drawable/ic_create_white"
+        android:visibility="visible"
+        app:backgroundTint="@color/colorAccent"
+        app:borderWidth="0dp"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom|right|end"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/activity_create_task_extended_toolbar_height"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/container_item_deadline"
+            style="@style/CreateTaskOptionItemLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CreateTaskOptionItemIcon"
+                    android:src="@drawable/ic_calendar_grey_400" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/material_design_keyline_one"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/CreateTaskOptionItemTitle"
+                        android:text="@string/create_task_option_item_deadline_title" />
+
+                    <TextView
+                        android:id="@+id/textview_item_deadline_subtitle"
+                        style="@style/CreateTaskOptionItemSubtitle"
+                        android:text="@string/create_task_option_item_deadline_value_default" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/container_item_priority"
+            style="@style/CreateTaskOptionItemLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CreateTaskOptionItemIcon"
+                    android:src="@drawable/ic_priority_grey_400" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/material_design_keyline_one"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/CreateTaskOptionItemTitle"
+                        android:text="@string/create_task_option_item_priority_title" />
+
+                    <TextView
+                        android:id="@+id/textview_item_priority_subtitle"
+                        style="@style/CreateTaskOptionItemSubtitle"
+                        android:text="@string/create_task_option_item_priority_value_default" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/container_item_tags"
+            style="@style/CreateTaskOptionItemLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CreateTaskOptionItemIcon"
+                    android:src="@drawable/ic_tag_grey_400" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/material_design_keyline_one"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/CreateTaskOptionItemTitle"
+                        android:text="@string/create_task_option_item_tags_title" />
+
+                    <TextView
+                        android:id="@+id/textview_item_tags_subtitle"
+                        style="@style/CreateTaskOptionItemSubtitle"
+                        android:text="@string/create_task_option_item_tags_value_default" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

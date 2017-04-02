@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorButtonNormal">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorButtonNormal">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.Translucent" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- Launch Screen theme -->
+    <style name="AppTheme.LaunchScreen" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/layer_launch_screen</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item> <!-- Status bar -->
+    </style>
+
+    <!-- Toolbar -->
+    <style name="MaterialDesignTheme.ToolBar" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:layout_height">@dimen/material_design_toolbar_height</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+
+    <style name="MaterialDesignTheme.ToolBarPrimary" parent="MaterialDesignTheme.ToolBar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:textColorPrimaryInverse">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="MaterialDesignTheme.ToolBarPrimary.Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_xxlarge</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+
+    <style name="MainActivityTheme" parent="AppTheme">
+        <!-- I set my background here and not in the view XML so
+         the rendering will not draw the background twice -->
+        <item name="android:windowBackground">@color/colorBackground</item>
+<!--        <item name="android:windowContentTransitions">true</item>-->
+<!--        Do not forget android:parentActivityName="com.blabla.ParentActivity" in manifest-->
+    </style>
+
+    <style name="BucketActivityTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="LoginActivityTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="RegisterActivityTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="OnBoardingActivityTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="CreateTaskActivityTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+</resources>

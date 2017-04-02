@@ -1,0 +1,231 @@
+<resources>
+    <style name="RippleView">
+        <item name="android:foreground">@drawable/ripple_foreground_grey</item>
+    </style>
+
+    <style name="Toolbar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:elevation">@dimen/material_design_toolbar_elevation</item>
+    </style>
+
+    <style name="Toolbar.Transparent">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="ButtonColorAccent" parent="@style/Widget.AppCompat.Button.Colored">
+        <!--    TODO: complete regarding the needs -->
+    </style>
+
+    <style name="ButtonColorNormal">
+<!--    TODO: complete regarding the needs -->
+    </style>
+
+    <style name="ButtonPrimary">
+        <item name="android:background">@drawable/button_primary_background</item>
+    </style>
+
+    <style name="ButtonAccent">
+        <item name="android:background">@drawable/button_accent_background</item>
+    </style>
+
+    <style name="SingleLineTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="TwoLineTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="MultiLineTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">false</item>
+    </style>
+
+    <style name="ToolbarTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_gravity">left|center_vertical</item>
+    </style>
+
+    <style name="CustomProgressBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+        <item name="android:indeterminateTint">?colorPrimary</item>
+    </style>
+
+    <style name="MaterialDesignFlatButton" parent="RippleView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_margin">@dimen/material_design_keyline_two</item>
+        <item name="android:paddingRight">@dimen/material_design_keyline_two</item>
+        <item name="android:paddingLeft">@dimen/material_design_keyline_two</item>
+    </style>
+
+
+    <style name="MaterialDesignFlatButtonText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:textColor">?colorAccent</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="PlaceholderTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="PlaceholderImage">
+        <item name="android:layout_marginBottom">@dimen/material_design_keyline_one</item>
+    </style>
+
+    <style name="FirebucketButton" parent="ButtonPrimary">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/material_design_keyline_one</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="FirebucketButtonAccent" parent="ButtonAccent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/material_design_keyline_one</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="FirebucketButtonWhite" parent="FirebucketButton">
+        <item name="android:background">@drawable/button_white_background</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <!-- BucketModel Items -->
+    <style name="BucketItemHeaderTitle" parent="SingleLineTextView">
+        <item name="android:layout_margin">@dimen/material_design_keyline_one</item>
+        <item name="android:textColor">?colorPrimary</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+
+    <style name="BucketItemTaskTitle" parent="MultiLineTextView">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="BucketItemTaskSubtitle" parent="SingleLineTextView">
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+
+    <style name="BucketItemTaskTag" parent="SingleLineTextView">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/grey_400</item>
+        <item name="android:background">@drawable/bucket_item_tag_background</item>
+        <item name="android:paddingTop">@dimen/material_design_keyline_three</item>
+        <item name="android:paddingBottom">@dimen/material_design_keyline_three</item>
+        <item name="android:paddingRight">@dimen/material_design_keyline_two</item>
+        <item name="android:paddingLeft">@dimen/material_design_keyline_two</item>
+    </style>
+
+    <style name="BucketItemTaskPriorityBadge" >
+        <item name="android:layout_width">5dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- Create task -->
+    <style name="CreateTaskEditTextTitle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_size_xxxlarge</item>
+        <item name="android:maxLength">255</item>
+    </style>
+
+    <style name="CreateTaskOptionItemLayout" parent="RippleView">
+        <item name="android:padding">@dimen/material_design_keyline_one</item>
+    </style>
+
+    <style name="CreateTaskOptionItemIcon">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+    </style>
+
+    <style name="CreateTaskOptionItemTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="CreateTaskOptionItemSubtitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <!-- Login -->
+    <style name="LoginFormTitle" parent="SingleLineTextView">
+        <item name="android:layout_marginBottom">@dimen/material_design_keyline_two</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_size_xxxlarge</item>
+    </style>
+
+    <style name="LoginFormAppIcon">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:src">@drawable/ic_launcher_web_no_shadow</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="LoginFormEditText" parent="TextAppearance.AppCompat">
+        <item name="colorAccent">?colorPrimary</item>
+        <item name="colorControlNormal">?colorPrimary</item>
+        <item name="colorControlActivated">?colorPrimary</item>
+        <item name="android:layout_marginTop">@dimen/material_design_keyline_two</item>
+        <item name="android:layout_marginBottom">@dimen/material_design_keyline_two</item>
+        <item name="android:textColor">?colorPrimary</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:maxLength">255</item>
+    </style>
+
+    <style name="LoginFormEmailEditText" parent="LoginFormEditText">
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="LoginFormPasswordEditText" parent="LoginFormEditText">
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <!-- OnBoarding -->
+    <style name="OnBoardingTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/material_design_keyline_one</item>
+        <item name="android:textSize">@dimen/text_size_xxlarge</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="OnBoardingCtaRegister">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="OnBoardingCtaLogin" parent="FirebucketButton">
+        <item name="android:background">@drawable/button_white_background</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:layout_margin">@dimen/material_design_keyline_one</item>
+    </style>
+</resources>

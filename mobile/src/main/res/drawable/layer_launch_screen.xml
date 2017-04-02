@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+    <!-- The background color, preferably the same as your normal theme -->
+    <item android:drawable="@color/colorPrimary"/>
+    <item android:id="@+id/launchscreen_product_logo" android:bottom="@dimen/launch_screen_product_logo_bottom">
+        <bitmap android:gravity="center" android:src="@drawable/launch_screen_image_logo_144" />
+    </item>
+    <!--    <item android:id="@+id/launchscreen_logo_text" android:bottom="@dimen/launch_screen_brand_logo_bottom">
+            <bitmap android:gravity="bottom|center" android:src="@drawable/logo_ct_text_132x44" />
+        </item>-->
+</layer-list>
