@@ -1,5 +1,7 @@
 package com.cremy.firebucket.data.entities;
 
+import android.support.annotation.Keep;
+
 import com.cremy.firebucket.domain.interactors.Params;
 import com.google.firebase.database.Exclude;
 import com.google.gson.annotations.SerializedName;
@@ -7,11 +9,12 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by remychantenay on 23/02/2017.
  */
+@Keep
 public class UserEntity {
 
-    private String uid = null;
-    private String email = null;
-    private String password = null;
+    @SerializedName("uid") private String uid = null;
+    @SerializedName("email") private String email = null;
+    @SerializedName("password") private String password = null;
     @SerializedName("username") private String username = null;
 
     public UserEntity() {

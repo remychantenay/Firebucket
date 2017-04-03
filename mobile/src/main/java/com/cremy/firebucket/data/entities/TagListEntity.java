@@ -1,14 +1,17 @@
 package com.cremy.firebucket.data.entities;
 
+import android.support.annotation.Keep;
+
 import com.google.firebase.database.Exclude;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@Keep
 public final class TagListEntity {
 
-
-    private HashMap<String, String> tags = null;
+    @SerializedName("tags") private HashMap<String, String> tags = null;
 
     public TagListEntity() {
         // Intentionally empty.

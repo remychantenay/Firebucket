@@ -25,16 +25,11 @@
 -dontwarn android.support.v7.**
 -keep class android.support.v7.** { *; }
 -keep interface android.support.v7.** { *; }
--keep class !android.support.v7.internal.view.menu.**,** {*;}
--keep class de.neofonie.** { *; }
--keep interface de.neofonie.** { *; }
 -keep class com.google.android.** { *; }
 -keep interface com.google.android.** { *; }
 -keep class com.google.gson.** { *; }
 -keep class com.google.gson.reflect.** { *; }
 -keep interface com.google.gson.** { *; }
--keep class com.nineoldandroids.** { *; }
--keep interface com.nineoldandroids.** { *; }
 
 
 # Gson specific
@@ -127,31 +122,11 @@
 -keep public class android.support.v7.preference.Preference { *; }
 -keep public class * extends android.support.v7.preference.Preference { *; }
 
--dontwarn okio.**
--dontwarn okhttp3.**
 -dontwarn javax.annotation.**
--dontwarn com.squareup.okhttp.**
 -dontwarn com.google.appengine.api.urlfetch.**
 -dontwarn io.reactivex.**
 -keepattributes Signature
 -keepattributes *Annotation*
--keep class com.squareup.okhttp.** { *; }
--keep interface com.squareup.okhttp.** { *; }
--keepclasseswithmembers class * {
-    @retrofit.http.* <methods>;
-}
-
-
-# Glide image library
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
-    **[] $VALUES;
-    public *;
-}
-
-# Retrofit 2
--dontwarn retrofit2.**
--keep class retrofit2.** { *; }
 -keepattributes Signature
 -keepattributes Exceptions
 

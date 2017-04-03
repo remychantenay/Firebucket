@@ -1,10 +1,13 @@
 package com.cremy.firebucket.data.entities;
 
+import android.support.annotation.Keep;
+
 import com.google.firebase.database.Exclude;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
 
+@Keep
 public final class BucketEntity {
 
     @SerializedName("tasks") private HashMap<String, TaskEntity> tasks = null;

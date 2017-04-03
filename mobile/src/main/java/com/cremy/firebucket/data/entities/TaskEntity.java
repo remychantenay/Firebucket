@@ -1,8 +1,11 @@
 package com.cremy.firebucket.data.entities;
 
+import android.support.annotation.Keep;
+
 import com.cremy.firebucket.utils.CustomDateUtils;
 import com.google.gson.annotations.SerializedName;
 
+@Keep
 public class TaskEntity {
 
     @SerializedName("id") private String id;
