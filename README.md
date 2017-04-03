@@ -34,3 +34,6 @@ This project is nothing more than a way to play with what I've learn. I was also
 
 ## Clean Architecture
 The project is following a [Clean architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html) approach.
+
+## Tests
+The complete set of tests is coming.
