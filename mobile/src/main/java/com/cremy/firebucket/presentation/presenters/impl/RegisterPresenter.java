@@ -3,18 +3,17 @@ package com.cremy.firebucket.presentation.presenters.impl;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.cremy.firebucket.analytics.AnalyticsHelper;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.user.LoginUserUseCase;
 import com.cremy.firebucket.domain.interactors.user.RegisterUserUseCase;
 import com.cremy.firebucket.domain.interactors.user.WriteUserUseCase;
 import com.cremy.firebucket.domain.models.UserModel;
-import com.cremy.firebucket.firebase.FirebaseAnalyticsHelper;
+import com.cremy.firebucket.firebase.RxFirebase;
 import com.cremy.firebucket.presentation.presenters.RegisterMVP;
 import com.cremy.firebucket.presentation.presenters.base.BasePresenter;
 import com.cremy.firebucket.presentation.ui.activities.BucketActivity;
 import com.cremy.firebucket.rx.DefaultObserver;
-import com.cremy.firebucket.firebase.RxFirebase;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 import javax.inject.Inject;
 
@@ -27,24 +26,23 @@ public final class RegisterPresenter extends BasePresenter<RegisterMVP.View>
 
     private final static int MIN_CHARS_PASSWORD = 5;
 
-    private final FirebaseAnalytics firebaseAnalytics;
+    private final AnalyticsHelper analyticsHelper;
     private final RegisterUserUseCase registerUserUseCase;
     private final WriteUserUseCase writeUserUseCase;
 
     @Inject
     public RegisterPresenter(RegisterUserUseCase registerUserUseCase,
                              WriteUserUseCase writeUserUseCase,
-                             FirebaseAnalytics firebaseAnalytics) {
+                             AnalyticsHelper analyticsHelper) {
         this.registerUserUseCase = registerUserUseCase;
         this.writeUserUseCase = writeUserUseCase;
-        this.firebaseAnalytics = firebaseAnalytics;
+        this.analyticsHelper = analyticsHelper;
     }
 
     @Override
     public void attachView(RegisterMVP.View view) {
         super.attachView(view);
-        FirebaseAnalyticsHelper.trackPageView(firebaseAnalytics,
-                FirebaseAnalyticsHelper.VIEW_REGISTRATION);
+        analyticsHelper.trackPageView(AnalyticsHelper.VIEW_REGISTRATION);
     }
 
     @Override
@@ -115,15 +113,15 @@ public final class RegisterPresenter extends BasePresenter<RegisterMVP.View>
     @Override
     public void onRegisterSuccessTracking(UserModel userModel) {
         Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalyticsHelper.PARAM_USER_UID, userModel.getUid());
-        FirebaseAnalyticsHelper.trackRegisterSuccess(firebaseAnalytics, bundle);
+        bundle.putString(AnalyticsHelper.PARAM_USER_UID, userModel.getUid());
+        analyticsHelper.trackRegisterSuccess(bundle);
     }
 
     @Override
     public void onRegisterFailureTracking(Throwable e) {
         Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalyticsHelper.PARAM_MESSAGE, e.getMessage());
-        FirebaseAnalyticsHelper.trackRegisterFailure(firebaseAnalytics, bundle);
+        bundle.putString(AnalyticsHelper.PARAM_MESSAGE, e.getMessage());
+        analyticsHelper.trackRegisterFailure(bundle);
     }
 
     @Override

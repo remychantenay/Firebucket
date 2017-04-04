@@ -3,17 +3,16 @@ package com.cremy.firebucket.presentation.presenters.impl;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.cremy.firebucket.analytics.AnalyticsHelper;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.bucket.GetBucketUseCase;
 import com.cremy.firebucket.domain.interactors.task.DeleteTaskUseCase;
 import com.cremy.firebucket.domain.models.BucketModel;
 import com.cremy.firebucket.domain.models.TaskModel;
-import com.cremy.firebucket.firebase.FirebaseAnalyticsHelper;
 import com.cremy.firebucket.presentation.presenters.BucketMVP;
 import com.cremy.firebucket.presentation.presenters.base.BasePresenter;
 import com.cremy.firebucket.rx.DefaultObserver;
 import com.cremy.firebucket.utils.helpers.SharedPreferencesHelper;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 import javax.inject.Inject;
 
@@ -24,7 +23,7 @@ public final class BucketPresenter extends BasePresenter<BucketMVP.View>
         implements BucketMVP.Presenter {
     private final static String TAG = BucketPresenter.class.getName();
 
-    private final FirebaseAnalytics firebaseAnalytics;
+    private final AnalyticsHelper analyticsHelper;
     private final SharedPreferences sharedPreferences;
     private final GetBucketUseCase getBucketUseCase;
     private final DeleteTaskUseCase deleteTaskUseCase;
@@ -32,19 +31,18 @@ public final class BucketPresenter extends BasePresenter<BucketMVP.View>
     @Inject
     public BucketPresenter(GetBucketUseCase getBucketUseCase,
                            DeleteTaskUseCase deleteTaskUseCase,
-                           FirebaseAnalytics firebaseAnalytics,
+                           AnalyticsHelper analyticsHelper,
                            SharedPreferences sharedPreferences) {
         this.getBucketUseCase = getBucketUseCase;
         this.deleteTaskUseCase = deleteTaskUseCase;
-        this.firebaseAnalytics = firebaseAnalytics;
+        this.analyticsHelper = analyticsHelper;
         this.sharedPreferences = sharedPreferences;
     }
 
     @Override
     public void attachView(BucketMVP.View view) {
         super.attachView(view);
-        FirebaseAnalyticsHelper.trackPageView(firebaseAnalytics,
-                FirebaseAnalyticsHelper.VIEW_BUCKET);
+        analyticsHelper.trackPageView(AnalyticsHelper.VIEW_BUCKET);
     }
 
     @Override
@@ -89,14 +87,14 @@ public final class BucketPresenter extends BasePresenter<BucketMVP.View>
 
     @Override
     public void onGetBucketSuccessTracking() {
-        FirebaseAnalyticsHelper.trackGetBucketSuccess(firebaseAnalytics, null);
+        analyticsHelper.trackGetBucketSuccess(null);
     }
 
     @Override
     public void onGetBucketFailureTracking(Throwable e) {
         Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalyticsHelper.PARAM_MESSAGE, e.getMessage());
-        FirebaseAnalyticsHelper.trackGetBucketFailure(firebaseAnalytics, bundle);
+        bundle.putString(AnalyticsHelper.PARAM_MESSAGE, e.getMessage());
+        analyticsHelper.trackGetBucketFailure(bundle);
     }
 
     @Override
@@ -120,14 +118,14 @@ public final class BucketPresenter extends BasePresenter<BucketMVP.View>
 
     @Override
     public void onDeleteTaskSuccessTracking() {
-        FirebaseAnalyticsHelper.trackDeleteTaskSuccess(firebaseAnalytics, null);
+        analyticsHelper.trackDeleteTaskSuccess(null);
     }
 
     @Override
     public void onDeleteTaskFailureTracking(Throwable e) {
         Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalyticsHelper.PARAM_MESSAGE, e.getMessage());
-        FirebaseAnalyticsHelper.trackDeleteFailure(firebaseAnalytics, bundle);
+        bundle.putString(AnalyticsHelper.PARAM_MESSAGE, e.getMessage());
+        analyticsHelper.trackDeleteFailure(bundle);
     }
 
     private final class GetBucketObserver extends DefaultObserver<BucketModel> {

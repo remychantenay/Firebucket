@@ -2,6 +2,7 @@ package com.cremy.firebucket.di.user;
 
 import android.support.v4.app.Fragment;
 
+import com.cremy.firebucket.analytics.AnalyticsHelper;
 import com.cremy.firebucket.data.repositories.UserRepository;
 import com.cremy.firebucket.data.repositories.datasource.UserDataSourceRemote;
 import com.cremy.firebucket.domain.interactors.user.CheckUserUseCase;
@@ -11,7 +12,6 @@ import com.cremy.firebucket.domain.interactors.user.RegisterUserUseCase;
 import com.cremy.firebucket.domain.interactors.user.WriteUserUseCase;
 import com.cremy.firebucket.presentation.presenters.impl.LoginPresenter;
 import com.cremy.firebucket.presentation.presenters.impl.OnBoardingPresenter;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
@@ -35,17 +35,17 @@ public class UserModule {
 
     @Provides
     OnBoardingPresenter provideOnBoardingPresenter(CheckUserUseCase checkUserUseCase,
-                                                   FirebaseAnalytics firebaseAnalytics,
+                                                   AnalyticsHelper analyticsHelper,
                                                    FirebaseRemoteConfig firebaseRemoteConfig) {
         return new OnBoardingPresenter(checkUserUseCase,
-                firebaseAnalytics,
+                analyticsHelper,
                 firebaseRemoteConfig);
     }
 
     @Provides
     LoginPresenter provideLoginPresenter(LoginUserUseCase loginUserUseCase,
-                                              FirebaseAnalytics firebaseAnalytics) {
-        return new LoginPresenter(loginUserUseCase, firebaseAnalytics);
+                                         AnalyticsHelper analyticsHelper) {
+        return new LoginPresenter(loginUserUseCase, analyticsHelper);
     }
 
     @Provides

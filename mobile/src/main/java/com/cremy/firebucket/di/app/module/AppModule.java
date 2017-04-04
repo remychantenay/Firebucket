@@ -5,9 +5,10 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.cremy.firebucket.App;
-import com.cremy.firebucket.BuildConfig;
+import com.cremy.firebucket.analytics.AnalyticsHelper;
 import com.cremy.firebucket.di.app.component.AppComponent;
 import com.cremy.firebucket.di.scope.ApplicationScope;
+import com.cremy.firebucket.firebase.FirebaseAnalyticsHelper;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -64,9 +65,9 @@ public class AppModule {
 
     @Provides
     @ApplicationScope
-    public FirebaseAnalytics provideFirebaseAnalytics(Context context) {
-        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
-        return firebaseAnalytics;
+    public AnalyticsHelper provideAnalyticsHelper(Context context) {
+        AnalyticsHelper AnalyticsHelper = new FirebaseAnalyticsHelper(FirebaseAnalytics.getInstance(context));
+        return AnalyticsHelper;
     }
 
     @Provides

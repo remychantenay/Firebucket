@@ -3,15 +3,14 @@ package com.cremy.firebucket.presentation.presenters.impl;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.cremy.firebucket.analytics.AnalyticsHelper;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.user.LoginUserUseCase;
 import com.cremy.firebucket.domain.models.UserModel;
-import com.cremy.firebucket.firebase.FirebaseAnalyticsHelper;
 import com.cremy.firebucket.presentation.presenters.LoginMVP;
 import com.cremy.firebucket.presentation.presenters.base.BasePresenter;
 import com.cremy.firebucket.presentation.ui.activities.BucketActivity;
 import com.cremy.firebucket.rx.DefaultObserver;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 import javax.inject.Inject;
 
@@ -24,21 +23,20 @@ public final class LoginPresenter extends BasePresenter<LoginMVP.View>
 
     private final static int MIN_CHARS_PASSWORD = 5;
 
-    private final FirebaseAnalytics firebaseAnalytics;
+    private final AnalyticsHelper analyticsHelper;
     private final LoginUserUseCase loginUserUseCase;
 
     @Inject
     public LoginPresenter(LoginUserUseCase loginUserUseCase,
-                          FirebaseAnalytics firebaseAnalytics) {
+                          AnalyticsHelper analyticsHelper) {
         this.loginUserUseCase = loginUserUseCase;
-        this.firebaseAnalytics = firebaseAnalytics;
+        this.analyticsHelper = analyticsHelper;
     }
 
     @Override
     public void attachView(LoginMVP.View view) {
         super.attachView(view);
-        FirebaseAnalyticsHelper.trackPageView(firebaseAnalytics,
-                FirebaseAnalyticsHelper.VIEW_LOGIN);
+        analyticsHelper.trackPageView(AnalyticsHelper.VIEW_LOGIN);
     }
 
     @Override
@@ -87,15 +85,15 @@ public final class LoginPresenter extends BasePresenter<LoginMVP.View>
     @Override
     public void onLoginSuccessTracking(UserModel userModel) {
         Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalyticsHelper.PARAM_USER_UID, userModel.getUid());
-        FirebaseAnalyticsHelper.trackLoginSuccess(firebaseAnalytics, bundle);
+        bundle.putString(AnalyticsHelper.PARAM_USER_UID, userModel.getUid());
+        analyticsHelper.trackLoginSuccess(bundle);
     }
 
     @Override
     public void onLoginFailureTracking(Throwable e) {
         Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalyticsHelper.PARAM_MESSAGE, e.getMessage());
-        FirebaseAnalyticsHelper.trackLoginFailure(firebaseAnalytics, bundle);
+        bundle.putString(AnalyticsHelper.PARAM_MESSAGE, e.getMessage());
+        analyticsHelper.trackLoginFailure(bundle);
     }
 
     @Override
