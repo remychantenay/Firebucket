@@ -24,4 +24,8 @@ public final class BucketEntity {
     public boolean isEmpty() {
         return (this.tasks == null || this.tasks.isEmpty());
     }
+
+    public void setTasks(HashMap<String, TaskEntity> tasks) {
+        this.tasks = tasks;
+    }
 }

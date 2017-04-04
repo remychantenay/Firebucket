@@ -15,8 +15,10 @@ public class TaskPriorityModel {
     public final static int PRIORITY_HIGH_ID = 2;
     public final static int PRIORITY_CRUCIAL_ID = 3;
 
+    public final static String PRIORITY_NORMAL_LABEL = "Normal";
+
     private int id = PRIORITY_NORMAL_ID;
-    private String label = "Normal";
+    private String label = PRIORITY_NORMAL_LABEL;
 
     public TaskPriorityModel() {
 
