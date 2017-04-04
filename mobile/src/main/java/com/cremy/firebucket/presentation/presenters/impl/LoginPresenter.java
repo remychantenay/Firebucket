@@ -7,7 +7,6 @@ import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.user.LoginUserUseCase;
 import com.cremy.firebucket.domain.models.UserModel;
 import com.cremy.firebucket.firebase.FirebaseAnalyticsHelper;
-import com.cremy.firebucket.firebase.FirebaseRemoteConfigHelper;
 import com.cremy.firebucket.presentation.presenters.LoginMVP;
 import com.cremy.firebucket.presentation.presenters.base.BasePresenter;
 import com.cremy.firebucket.presentation.ui.activities.BucketActivity;

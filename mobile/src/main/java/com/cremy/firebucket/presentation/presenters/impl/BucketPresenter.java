@@ -1,24 +1,18 @@
 package com.cremy.firebucket.presentation.presenters.impl;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.cremy.firebucket.data.entities.TaskEntity;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.bucket.GetBucketUseCase;
 import com.cremy.firebucket.domain.interactors.task.DeleteTaskUseCase;
-import com.cremy.firebucket.domain.interactors.user.LoginUserUseCase;
 import com.cremy.firebucket.domain.models.BucketModel;
-import com.cremy.firebucket.domain.models.UserModel;
+import com.cremy.firebucket.domain.models.TaskModel;
 import com.cremy.firebucket.firebase.FirebaseAnalyticsHelper;
 import com.cremy.firebucket.presentation.presenters.BucketMVP;
-import com.cremy.firebucket.presentation.presenters.CreateTaskMVP;
-import com.cremy.firebucket.presentation.presenters.LoginMVP;
 import com.cremy.firebucket.presentation.presenters.base.BasePresenter;
 import com.cremy.firebucket.rx.DefaultObserver;
 import com.cremy.firebucket.utils.helpers.SharedPreferencesHelper;
-import com.cremy.greenrobotutils.library.util.NetworkUtils;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import javax.inject.Inject;
@@ -155,7 +149,7 @@ public final class BucketPresenter extends BasePresenter<BucketMVP.View>
         }
     }
 
-    private final class DeleteTaskObserver extends DefaultObserver<TaskEntity> {
+    private final class DeleteTaskObserver extends DefaultObserver<TaskModel> {
 
         @Override public void onComplete() {
             super.onComplete();
@@ -167,8 +161,8 @@ public final class BucketPresenter extends BasePresenter<BucketMVP.View>
             onDeleteTaskFailure(e);
         }
 
-        @Override public void onNext(TaskEntity taskEntity) {
-            super.onNext(taskEntity);
+        @Override public void onNext(TaskModel taskModel) {
+            super.onNext(taskModel);
             onDeleteTaskSuccessTracking();
             onDeleteTaskSuccess();
         }

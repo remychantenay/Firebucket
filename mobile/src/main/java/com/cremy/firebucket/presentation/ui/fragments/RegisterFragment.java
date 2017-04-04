@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.cremy.firebucket.App;
@@ -16,9 +15,7 @@ import com.cremy.firebucket.R;
 import com.cremy.firebucket.di.user.DaggerUserComponent;
 import com.cremy.firebucket.di.user.UserComponent;
 import com.cremy.firebucket.di.user.UserModule;
-import com.cremy.firebucket.presentation.presenters.LoginMVP;
 import com.cremy.firebucket.presentation.presenters.RegisterMVP;
-import com.cremy.firebucket.presentation.presenters.impl.LoginPresenter;
 import com.cremy.firebucket.presentation.presenters.impl.RegisterPresenter;
 import com.cremy.firebucket.presentation.ui.base.BaseFragment;
 

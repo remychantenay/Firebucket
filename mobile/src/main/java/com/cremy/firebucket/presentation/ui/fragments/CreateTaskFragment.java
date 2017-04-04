@@ -14,7 +14,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,7 +23,6 @@ import android.view.animation.ScaleAnimation;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -33,18 +31,12 @@ import com.cremy.firebucket.R;
 import com.cremy.firebucket.di.task.DaggerTaskComponent;
 import com.cremy.firebucket.di.task.TaskComponent;
 import com.cremy.firebucket.di.task.TaskModule;
-import com.cremy.firebucket.di.user.DaggerUserComponent;
-import com.cremy.firebucket.di.user.UserComponent;
-import com.cremy.firebucket.di.user.UserModule;
 import com.cremy.firebucket.domain.models.TaskPriorityModel;
 import com.cremy.firebucket.presentation.presenters.CreateTaskMVP;
-import com.cremy.firebucket.presentation.presenters.LoginMVP;
 import com.cremy.firebucket.presentation.presenters.impl.CreateTaskPresenter;
-import com.cremy.firebucket.presentation.presenters.impl.LoginPresenter;
 import com.cremy.firebucket.presentation.ui.base.BaseFragment;
 import com.cremy.firebucket.utils.CustomDateUtils;
 import com.cremy.greenrobotutils.library.permission.PermissionHelper;
-import com.cremy.greenrobotutils.library.ui.ActivityUtils;
 import com.cremy.greenrobotutils.library.ui.SnackBarUtils;
 import com.cremy.greenrobotutils.library.util.NetworkUtils;
 
@@ -273,6 +265,11 @@ public class CreateTaskFragment extends BaseFragment
         showMessage(getResources().getString(R.string.error_create_task));
     }
 
+    @Override
+    public void showMessageInvalidTaskTitle() {
+        showMessage(getResources().getString(R.string.error_create_task_invalid_title));
+    }
+
     @SuppressWarnings("ResourceType")
     @Override
     public void showTagList(final String[] tags) {
@@ -285,11 +282,6 @@ public class CreateTaskFragment extends BaseFragment
             }
         });
         ad.show();
-    }
-
-    @Override
-    public void showTagListEmpty() {
-        showMessage(getString(R.string.error_create_task_get_tags));
     }
 
     @Override

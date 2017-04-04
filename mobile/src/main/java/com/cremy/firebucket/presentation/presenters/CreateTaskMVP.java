@@ -6,6 +6,7 @@ import android.speech.RecognitionListener;
 
 import com.cremy.firebucket.data.entities.TaskEntity;
 import com.cremy.firebucket.domain.models.TagListModel;
+import com.cremy.firebucket.domain.models.TaskModel;
 import com.cremy.firebucket.domain.models.UserModel;
 import com.cremy.firebucket.presentation.ui.base.BaseMvpView;
 
@@ -20,8 +21,9 @@ public interface CreateTaskMVP {
         void onSuccess();
         void onFailure();
 
+        void showMessageInvalidTaskTitle();
+
         void showTagList(String[] tags);
-        void showTagListEmpty();
         void showTagListError();
 
         void initDeadlineDatePicker();
@@ -43,7 +45,7 @@ public interface CreateTaskMVP {
         void onCreateTaskSuccess();
         void onCreateTaskFailure(Throwable e);
 
-        void onCreateTaskSuccessTracking(TaskEntity taskEntity);
+        void onCreateTaskSuccessTracking(TaskModel taskModel);
         void onCreateTaskFailureTracking(Throwable e);
     }
 }

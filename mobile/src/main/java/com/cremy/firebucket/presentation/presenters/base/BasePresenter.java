@@ -3,11 +3,6 @@ package com.cremy.firebucket.presentation.presenters.base;
 
 import com.cremy.firebucket.presentation.ui.base.BaseMvpView;
 
-/**
- * Mother of all presenters.
- * Note: must implement {@link IBasePresenter}
- * Created by remychantenay on 14/05/2016.
- */
 public class BasePresenter<T extends BaseMvpView> implements IBasePresenter<T> {
 
     protected T view;

@@ -2,12 +2,16 @@ package com.cremy.firebucket.data.repositories;
 
 import com.cremy.firebucket.data.entities.TaskEntity;
 import com.cremy.firebucket.data.entities.TaskPriorityEntity;
+import com.cremy.firebucket.data.entities.mappers.TaskMapper;
 import com.cremy.firebucket.data.repositories.datasource.TaskDataSourceRemote;
+import com.cremy.firebucket.domain.models.TaskModel;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Function;
 
 
 /**
@@ -26,23 +30,33 @@ public class TaskRepository {
     }
 
     public Observable createTask(String title,
-                                         String deadline,
-                                         long deadlineMs,
-                                         String tag,
-                                         int priorityId,
-                                         String priorityLabel) {
+                                 String deadline,
+                                 long deadlineMs,
+                                 String tag,
+                                 int priorityId,
+                                 String priorityLabel) {
         TaskEntity taskEntity = new TaskEntity();
         taskEntity.setTitle(title);
         taskEntity.setTag(tag);
         taskEntity.setDeadlineMs(deadlineMs);
         taskEntity.setDeadline(deadline);
         taskEntity.setPriority(new TaskPriorityEntity(priorityId, priorityLabel));
-        return taskDataSourceRemote.createTask(taskEntity);
+        return taskDataSourceRemote.createTask(taskEntity).map(new Function<TaskEntity, TaskModel>() {
+            @Override
+            public TaskModel apply(@NonNull TaskEntity taskEntity) throws Exception {
+                return TaskMapper.transform(taskEntity);
+            }
+        });
     }
 
-    public Observable<TaskEntity> deleteTask(String taskId) {
+    public Observable deleteTask(String taskId) {
         TaskEntity taskEntity = new TaskEntity();
         taskEntity.setId(taskId);
-        return taskDataSourceRemote.deleteTask(taskEntity);
+        return taskDataSourceRemote.deleteTask(taskEntity).map(new Function<TaskEntity, TaskModel>() {
+            @Override
+            public TaskModel apply(@NonNull TaskEntity taskEntity) throws Exception {
+                return TaskMapper.transform(taskEntity);
+            }
+        });
     }
 }

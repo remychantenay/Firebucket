@@ -1,25 +1,20 @@
 package com.cremy.firebucket.presentation.presenters.impl;
 
-import android.content.Context;
+import android.net.Network;
 import android.os.Bundle;
 
 import com.cremy.firebucket.R;
-import com.cremy.firebucket.data.entities.TaskEntity;
+import com.cremy.firebucket.data.exceptions.NetworkConnectionException;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.taglist.GetTagListUseCase;
 import com.cremy.firebucket.domain.interactors.task.CreateTaskUseCase;
-import com.cremy.firebucket.domain.interactors.task.DeleteTaskUseCase;
-import com.cremy.firebucket.domain.interactors.user.LoginUserUseCase;
 import com.cremy.firebucket.domain.models.TagListModel;
+import com.cremy.firebucket.domain.models.TaskModel;
 import com.cremy.firebucket.domain.models.TaskPriorityModel;
-import com.cremy.firebucket.domain.models.UserModel;
 import com.cremy.firebucket.firebase.FirebaseAnalyticsHelper;
 import com.cremy.firebucket.presentation.presenters.CreateTaskMVP;
-import com.cremy.firebucket.presentation.presenters.LoginMVP;
-import com.cremy.firebucket.presentation.presenters.RegisterMVP;
 import com.cremy.firebucket.presentation.presenters.base.BasePresenter;
 import com.cremy.firebucket.rx.DefaultObserver;
-import com.cremy.firebucket.utils.CustomDateUtils;
 import com.cremy.greenrobotutils.library.util.NetworkUtils;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
@@ -104,14 +99,9 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
                            String tag,
                            int idPriority) {
 
-        if (!NetworkUtils.isNetworkEnabled(view.getContext())) {
-            view.showNoNetwork();
-            return;
-        }
-
         if (title.isEmpty() || deadline == null || tag.isEmpty()) {
             checkViewAttached();
-            view.showMessage(view.getContext().getResources().getString(R.string.error_create_task_invalid_title));
+            view.showMessageInvalidTaskTitle();
             return;
         }
 
@@ -139,14 +129,13 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
         e.printStackTrace();
         checkViewAttached();
         view.hideLoading();
-        view.onFailure();
     }
 
     @Override
-    public void onCreateTaskSuccessTracking(TaskEntity taskEntity) {
+    public void onCreateTaskSuccessTracking(TaskModel taskModel) {
         Bundle bundle = new Bundle();
-        bundle.putString(CreateTaskUseCase.PARAMS_KEY_TAG, taskEntity.getTag());
-        bundle.putString(CreateTaskUseCase.PARAMS_KEY_PRIORITY_LABEL, taskEntity.getPriority().getLabel());
+        bundle.putString(CreateTaskUseCase.PARAMS_KEY_TAG, taskModel.getTag());
+        bundle.putString(CreateTaskUseCase.PARAMS_KEY_PRIORITY_LABEL, taskModel.getPriority().getLabel());
         FirebaseAnalyticsHelper.trackCreateTaskSuccess(firebaseAnalytics, bundle);
     }
 
@@ -176,7 +165,7 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
         }
     }
 
-    private final class GetCreateTaskObserver extends DefaultObserver<TaskEntity> {
+    private final class GetCreateTaskObserver extends DefaultObserver<TaskModel> {
 
         @Override public void onComplete() {
             super.onComplete();
@@ -188,9 +177,9 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
             onCreateTaskFailure(e);
         }
 
-        @Override public void onNext(TaskEntity taskEntity) {
-            super.onNext(taskEntity);
-            onCreateTaskSuccessTracking(taskEntity);
+        @Override public void onNext(TaskModel taskModel) {
+            super.onNext(taskModel);
+            onCreateTaskSuccessTracking(taskModel);
             onCreateTaskSuccess();
         }
     }

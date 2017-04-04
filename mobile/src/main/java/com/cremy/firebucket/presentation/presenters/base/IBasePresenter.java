@@ -9,10 +9,8 @@ import com.cremy.firebucket.presentation.ui.base.BaseMvpView;
  */
 public interface IBasePresenter<V extends BaseMvpView> {
 
-    //region View
-    void attachView(V _view);
+    void attachView(V view);
     void detachView();
     boolean isViewAttached();
     void checkViewAttached();
-    //endregion
 }
