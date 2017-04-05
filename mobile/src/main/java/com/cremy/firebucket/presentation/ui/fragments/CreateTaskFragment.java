@@ -65,7 +65,7 @@ public class CreateTaskFragment extends BaseFragment
     private int startYear;
     private int startMonth;
     private int startDay;
-    private int idPriority = 0;
+    private int idPriority = TaskPriorityModel.PRIORITY_NORMAL_ID;
 
     @Inject
     CreateTaskPresenter presenter;
@@ -204,6 +204,7 @@ public class CreateTaskFragment extends BaseFragment
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initDeadlineDatePicker();
+        textViewItemPrioritySubtitle.setText(TaskPriorityModel.getResourceLabel(getContext(), idPriority));
     }
 
     @Override
