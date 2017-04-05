@@ -2,7 +2,7 @@ package com.cremy.firebucket.presentation.presenters.impl;
 
 import android.os.Bundle;
 
-import com.cremy.firebucket.analytics.AnalyticsHelper;
+import com.cremy.firebucket.analytics.AnalyticsInterface;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.taglist.GetTagListUseCase;
 import com.cremy.firebucket.domain.interactors.task.CreateTaskUseCase;
@@ -25,23 +25,23 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
         implements CreateTaskMVP.Presenter {
     private final static String TAG = CreateTaskPresenter.class.getName();
 
-    private final AnalyticsHelper analyticsHelper;
+    private final AnalyticsInterface analyticsInterface;
     private final GetTagListUseCase getTagListUseCase;
     private final CreateTaskUseCase createTaskUseCase;
 
     @Inject
     public CreateTaskPresenter(GetTagListUseCase getTagListUseCase,
                                CreateTaskUseCase createTaskUseCase,
-                               AnalyticsHelper analyticsHelper) {
+                               AnalyticsInterface analyticsInterface) {
         this.getTagListUseCase = getTagListUseCase;
         this.createTaskUseCase = createTaskUseCase;
-        this.analyticsHelper = analyticsHelper;
+        this.analyticsInterface = analyticsInterface;
     }
 
     @Override
     public void attachView(CreateTaskMVP.View view) {
         super.attachView(view);
-        analyticsHelper.trackPageView(AnalyticsHelper.VIEW_CREATE_TASK);
+        analyticsInterface.trackPageView(AnalyticsInterface.VIEW_CREATE_TASK);
     }
 
     @Override
@@ -78,14 +78,14 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
 
     @Override
     public void onGetTagListSuccessTracking() {
-        analyticsHelper.trackGetTagListSuccess(null);
+        analyticsInterface.trackGetTagListSuccess(null);
     }
 
     @Override
     public void onGetTagListFailureTracking(Throwable e) {
         Bundle bundle = new Bundle();
-        bundle.putString(AnalyticsHelper.PARAM_MESSAGE, e.getMessage());
-        analyticsHelper.trackGetTagListFailure(bundle);
+        bundle.putString(AnalyticsInterface.PARAM_MESSAGE, e.getMessage());
+        analyticsInterface.trackGetTagListFailure(bundle);
     }
 
     @Override
@@ -131,14 +131,14 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
         Bundle bundle = new Bundle();
         bundle.putString(CreateTaskUseCase.PARAMS_KEY_TAG, taskModel.getTag());
         bundle.putString(CreateTaskUseCase.PARAMS_KEY_PRIORITY_LABEL, taskModel.getPriority().getLabel());
-        analyticsHelper.trackCreateTaskSuccess(bundle);
+        analyticsInterface.trackCreateTaskSuccess(bundle);
     }
 
     @Override
     public void onCreateTaskFailureTracking(Throwable e) {
         Bundle bundle = new Bundle();
-        bundle.putString(AnalyticsHelper.PARAM_MESSAGE, e.getMessage());
-        analyticsHelper.trackCreateTaskFailure(bundle);
+        bundle.putString(AnalyticsInterface.PARAM_MESSAGE, e.getMessage());
+        analyticsInterface.trackCreateTaskFailure(bundle);
     }
 
     private final class GetTagListObserver extends DefaultObserver<TagListModel> {

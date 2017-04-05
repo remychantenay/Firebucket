@@ -2,7 +2,7 @@ package com.cremy.firebucket.di.task;
 
 import android.support.v4.app.Fragment;
 
-import com.cremy.firebucket.analytics.AnalyticsHelper;
+import com.cremy.firebucket.analytics.AnalyticsInterface;
 import com.cremy.firebucket.data.repositories.TagListRepository;
 import com.cremy.firebucket.data.repositories.TaskRepository;
 import com.cremy.firebucket.data.repositories.datasource.TagListDataSourceRemote;
@@ -34,10 +34,10 @@ public class TaskModule {
     @Provides
     CreateTaskPresenter provideCreateTaskPresenter(GetTagListUseCase getTagListUseCase,
                                                    CreateTaskUseCase createTaskUseCase,
-                                                   AnalyticsHelper analyticsHelper) {
+                                                   AnalyticsInterface analyticsInterface) {
         return new CreateTaskPresenter(getTagListUseCase,
                 createTaskUseCase,
-                analyticsHelper);
+                analyticsInterface);
     }
 
     @Provides

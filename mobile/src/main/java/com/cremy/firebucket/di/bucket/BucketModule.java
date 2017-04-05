@@ -3,7 +3,7 @@ package com.cremy.firebucket.di.bucket;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 
-import com.cremy.firebucket.analytics.AnalyticsHelper;
+import com.cremy.firebucket.analytics.AnalyticsInterface;
 import com.cremy.firebucket.data.repositories.BucketRepository;
 import com.cremy.firebucket.data.repositories.TaskRepository;
 import com.cremy.firebucket.data.repositories.datasource.BucketDataSourceRemote;
@@ -34,11 +34,11 @@ public class BucketModule {
     @Provides
     BucketPresenter provideBucketPresenter(GetBucketUseCase getBucketUseCase,
                                            DeleteTaskUseCase deleteTaskUseCase,
-                                           AnalyticsHelper analyticsHelper,
+                                           AnalyticsInterface analyticsInterface,
                                            SharedPreferences sharedPreferences) {
         return new BucketPresenter(getBucketUseCase,
                 deleteTaskUseCase,
-                analyticsHelper,
+                analyticsInterface,
                 sharedPreferences);
     }
 

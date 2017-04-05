@@ -2,15 +2,15 @@ package com.cremy.firebucket.presentation.presenters.impl;
 
 import android.content.Context;
 
-import com.cremy.firebucket.analytics.AnalyticsHelper;
+import com.cremy.firebucket.analytics.AnalyticsInterface;
+import com.cremy.firebucket.config.ConfigInterface;
+import com.cremy.firebucket.config.FirebucketConfig;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.user.CheckUserUseCase;
-import com.cremy.firebucket.firebase.FirebaseRemoteConfigHelper;
 import com.cremy.firebucket.presentation.presenters.OnBoardingMVP;
 import com.cremy.firebucket.presentation.presenters.base.BasePresenter;
 import com.cremy.firebucket.presentation.ui.activities.BucketActivity;
 import com.cremy.firebucket.rx.DefaultObserver;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import javax.inject.Inject;
 
@@ -22,22 +22,22 @@ public final class OnBoardingPresenter extends BasePresenter<OnBoardingMVP.View>
     private final static String TAG = OnBoardingPresenter.class.getName();
 
     private final CheckUserUseCase checkUserUseCase;
-    private final AnalyticsHelper analyticsHelper;
-    private final FirebaseRemoteConfig firebaseRemoteConfig;
+    private final AnalyticsInterface analyticsInterface;
+    private final ConfigInterface configInterface;
 
     @Inject
     public OnBoardingPresenter(CheckUserUseCase checkUserUseCase,
-                               AnalyticsHelper analyticsHelper,
-                               FirebaseRemoteConfig firebaseRemoteConfig) {
+                               AnalyticsInterface analyticsInterface,
+                               ConfigInterface configInterface) {
         this.checkUserUseCase = checkUserUseCase;
-        this.analyticsHelper = analyticsHelper;
-        this.firebaseRemoteConfig = firebaseRemoteConfig;
+        this.analyticsInterface = analyticsInterface;
+        this.configInterface = configInterface;
     }
 
     @Override
     public void attachView(OnBoardingMVP.View view) {
         super.attachView(view);
-        analyticsHelper.trackPageView(AnalyticsHelper.VIEW_ONBOARDING);
+        analyticsInterface.trackPageView(AnalyticsInterface.VIEW_ONBOARDING);
     }
 
     @Override
@@ -58,9 +58,8 @@ public final class OnBoardingPresenter extends BasePresenter<OnBoardingMVP.View>
 
     @Override
     public boolean isInMaintenance() {
-        final String value = FirebaseRemoteConfigHelper.getString(firebaseRemoteConfig,
-                FirebaseRemoteConfigHelper.FirebucketRemoteConfig.MAINTENANCE);
-        return (!value.equals(FirebaseRemoteConfigHelper.FirebucketRemoteConfig.MAINTENANCE.getDefaultValue()));
+        final String value = configInterface.getString(FirebucketConfig.MAINTENANCE.getKey());
+        return (!value.equals(FirebucketConfig.MAINTENANCE.getDefaultValue()));
     }
 
     private final class CheckUserObserver extends DefaultObserver<Boolean> {

@@ -3,7 +3,7 @@ package com.cremy.firebucket.presentation.presenters.impl;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.cremy.firebucket.analytics.AnalyticsHelper;
+import com.cremy.firebucket.analytics.AnalyticsInterface;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.user.LoginUserUseCase;
 import com.cremy.firebucket.domain.interactors.user.RegisterUserUseCase;
@@ -26,23 +26,23 @@ public final class RegisterPresenter extends BasePresenter<RegisterMVP.View>
 
     private final static int MIN_CHARS_PASSWORD = 5;
 
-    private final AnalyticsHelper analyticsHelper;
+    private final AnalyticsInterface analyticsInterface;
     private final RegisterUserUseCase registerUserUseCase;
     private final WriteUserUseCase writeUserUseCase;
 
     @Inject
     public RegisterPresenter(RegisterUserUseCase registerUserUseCase,
                              WriteUserUseCase writeUserUseCase,
-                             AnalyticsHelper analyticsHelper) {
+                             AnalyticsInterface analyticsInterface) {
         this.registerUserUseCase = registerUserUseCase;
         this.writeUserUseCase = writeUserUseCase;
-        this.analyticsHelper = analyticsHelper;
+        this.analyticsInterface = analyticsInterface;
     }
 
     @Override
     public void attachView(RegisterMVP.View view) {
         super.attachView(view);
-        analyticsHelper.trackPageView(AnalyticsHelper.VIEW_REGISTRATION);
+        analyticsInterface.trackPageView(AnalyticsInterface.VIEW_REGISTRATION);
     }
 
     @Override
@@ -113,15 +113,15 @@ public final class RegisterPresenter extends BasePresenter<RegisterMVP.View>
     @Override
     public void onRegisterSuccessTracking(UserModel userModel) {
         Bundle bundle = new Bundle();
-        bundle.putString(AnalyticsHelper.PARAM_USER_UID, userModel.getUid());
-        analyticsHelper.trackRegisterSuccess(bundle);
+        bundle.putString(AnalyticsInterface.PARAM_USER_UID, userModel.getUid());
+        analyticsInterface.trackRegisterSuccess(bundle);
     }
 
     @Override
     public void onRegisterFailureTracking(Throwable e) {
         Bundle bundle = new Bundle();
-        bundle.putString(AnalyticsHelper.PARAM_MESSAGE, e.getMessage());
-        analyticsHelper.trackRegisterFailure(bundle);
+        bundle.putString(AnalyticsInterface.PARAM_MESSAGE, e.getMessage());
+        analyticsInterface.trackRegisterFailure(bundle);
     }
 
     @Override

@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.cremy.firebucket.App;
-import com.cremy.firebucket.analytics.AnalyticsHelper;
+import com.cremy.firebucket.analytics.AnalyticsInterface;
+import com.cremy.firebucket.config.ConfigInterface;
 import com.cremy.firebucket.di.app.module.AppModule;
 import com.cremy.firebucket.di.scope.ApplicationScope;
 import com.cremy.firebucket.utils.rx.RxEventBus;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.gson.Gson;
 
 import dagger.Component;
@@ -34,7 +34,7 @@ public interface AppComponent {
     Gson gson();
     FirebaseDatabase firebaseDatabase();
     FirebaseAuth firebaseAuth();
-    AnalyticsHelper analyticsHelper();
-    FirebaseRemoteConfig firebaseRemoteConfig();
+    AnalyticsInterface analyticsHelper();
+    ConfigInterface configHelper();
     SharedPreferences sharedPreferences();
 }

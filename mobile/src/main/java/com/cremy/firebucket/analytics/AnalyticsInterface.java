@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
  * Created by remychantenay on 28/03/2017.
  */
 
-public interface AnalyticsHelper {
+public interface AnalyticsInterface {
 
     public final static String PARAM_USER_UID = "user_uid";
     public final static String PARAM_MESSAGE = "message";

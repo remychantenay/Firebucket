@@ -3,7 +3,7 @@ package com.cremy.firebucket.presentation.presenters.impl;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.cremy.firebucket.analytics.AnalyticsHelper;
+import com.cremy.firebucket.analytics.AnalyticsInterface;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.user.LoginUserUseCase;
 import com.cremy.firebucket.domain.models.UserModel;
@@ -23,20 +23,20 @@ public final class LoginPresenter extends BasePresenter<LoginMVP.View>
 
     private final static int MIN_CHARS_PASSWORD = 5;
 
-    private final AnalyticsHelper analyticsHelper;
+    private final AnalyticsInterface analyticsInterface;
     private final LoginUserUseCase loginUserUseCase;
 
     @Inject
     public LoginPresenter(LoginUserUseCase loginUserUseCase,
-                          AnalyticsHelper analyticsHelper) {
+                          AnalyticsInterface analyticsInterface) {
         this.loginUserUseCase = loginUserUseCase;
-        this.analyticsHelper = analyticsHelper;
+        this.analyticsInterface = analyticsInterface;
     }
 
     @Override
     public void attachView(LoginMVP.View view) {
         super.attachView(view);
-        analyticsHelper.trackPageView(AnalyticsHelper.VIEW_LOGIN);
+        analyticsInterface.trackPageView(AnalyticsInterface.VIEW_LOGIN);
     }
 
     @Override
@@ -85,15 +85,15 @@ public final class LoginPresenter extends BasePresenter<LoginMVP.View>
     @Override
     public void onLoginSuccessTracking(UserModel userModel) {
         Bundle bundle = new Bundle();
-        bundle.putString(AnalyticsHelper.PARAM_USER_UID, userModel.getUid());
-        analyticsHelper.trackLoginSuccess(bundle);
+        bundle.putString(AnalyticsInterface.PARAM_USER_UID, userModel.getUid());
+        analyticsInterface.trackLoginSuccess(bundle);
     }
 
     @Override
     public void onLoginFailureTracking(Throwable e) {
         Bundle bundle = new Bundle();
-        bundle.putString(AnalyticsHelper.PARAM_MESSAGE, e.getMessage());
-        analyticsHelper.trackLoginFailure(bundle);
+        bundle.putString(AnalyticsInterface.PARAM_MESSAGE, e.getMessage());
+        analyticsInterface.trackLoginFailure(bundle);
     }
 
     @Override

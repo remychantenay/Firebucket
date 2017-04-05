@@ -5,10 +5,12 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.cremy.firebucket.App;
-import com.cremy.firebucket.analytics.AnalyticsHelper;
+import com.cremy.firebucket.analytics.AnalyticsInterface;
+import com.cremy.firebucket.config.ConfigInterface;
 import com.cremy.firebucket.di.app.component.AppComponent;
 import com.cremy.firebucket.di.scope.ApplicationScope;
 import com.cremy.firebucket.firebase.FirebaseAnalyticsHelper;
+import com.cremy.firebucket.firebase.FirebaseRemoteConfigHelper;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -65,15 +67,16 @@ public class AppModule {
 
     @Provides
     @ApplicationScope
-    public AnalyticsHelper provideAnalyticsHelper(Context context) {
-        AnalyticsHelper AnalyticsHelper = new FirebaseAnalyticsHelper(FirebaseAnalytics.getInstance(context));
-        return AnalyticsHelper;
+    public AnalyticsInterface provideAnalyticsHelper(Context context) {
+        AnalyticsInterface AnalyticsInterface = new FirebaseAnalyticsHelper(FirebaseAnalytics.getInstance(context));
+        return AnalyticsInterface;
     }
 
     @Provides
     @ApplicationScope
-    public FirebaseRemoteConfig provideFirebaseRemoteConfig() {
-        return FirebaseRemoteConfig.getInstance();
+    public ConfigInterface provideConfigHelper() {
+        ConfigInterface configInterface = new FirebaseRemoteConfigHelper(FirebaseRemoteConfig.getInstance());
+        return configInterface;
     }
 
     @Provides

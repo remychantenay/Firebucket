@@ -3,16 +3,16 @@ package com.cremy.firebucket.firebase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.cremy.firebucket.analytics.AnalyticsHelper;
+import com.cremy.firebucket.analytics.AnalyticsInterface;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 /**
  * Created by remychantenay on 28/03/2017.
  */
 
-public class FirebaseAnalyticsHelper implements AnalyticsHelper {
+public class FirebaseAnalyticsHelper implements AnalyticsInterface {
 
-    public FirebaseAnalytics instance;
+    private FirebaseAnalytics instance;
 
     public FirebaseAnalyticsHelper(FirebaseAnalytics instance) {
         this.instance = instance;

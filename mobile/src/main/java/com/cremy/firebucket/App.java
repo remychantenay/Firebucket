@@ -7,7 +7,6 @@ import android.os.StrictMode;
 import com.cremy.firebucket.di.app.component.AppComponent;
 import com.cremy.firebucket.di.app.component.DaggerAppComponent;
 import com.cremy.firebucket.di.app.module.AppModule;
-import com.cremy.firebucket.firebase.FirebaseRemoteConfigHelper;
 
 
 public class App extends Application {
@@ -64,7 +63,7 @@ public class App extends Application {
     }
 
     private void initRemoteConfig() {
-        FirebaseRemoteConfigHelper.setGlobalDefaultValues(component.firebaseRemoteConfig());
-        FirebaseRemoteConfigHelper.fetch(component.firebaseRemoteConfig(), 0);
+        component.configHelper().setGlobalDefaultValues();
+        component.configHelper().fetch(0);
     }
 }

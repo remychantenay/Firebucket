@@ -3,7 +3,7 @@ package com.cremy.firebucket.presentation.presenters.impl;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.cremy.firebucket.analytics.AnalyticsHelper;
+import com.cremy.firebucket.analytics.AnalyticsInterface;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.bucket.GetBucketUseCase;
 import com.cremy.firebucket.domain.interactors.task.DeleteTaskUseCase;
@@ -23,7 +23,7 @@ public final class BucketPresenter extends BasePresenter<BucketMVP.View>
         implements BucketMVP.Presenter {
     private final static String TAG = BucketPresenter.class.getName();
 
-    private final AnalyticsHelper analyticsHelper;
+    private final AnalyticsInterface analyticsInterface;
     private final SharedPreferences sharedPreferences;
     private final GetBucketUseCase getBucketUseCase;
     private final DeleteTaskUseCase deleteTaskUseCase;
@@ -31,18 +31,18 @@ public final class BucketPresenter extends BasePresenter<BucketMVP.View>
     @Inject
     public BucketPresenter(GetBucketUseCase getBucketUseCase,
                            DeleteTaskUseCase deleteTaskUseCase,
-                           AnalyticsHelper analyticsHelper,
+                           AnalyticsInterface analyticsInterface,
                            SharedPreferences sharedPreferences) {
         this.getBucketUseCase = getBucketUseCase;
         this.deleteTaskUseCase = deleteTaskUseCase;
-        this.analyticsHelper = analyticsHelper;
+        this.analyticsInterface = analyticsInterface;
         this.sharedPreferences = sharedPreferences;
     }
 
     @Override
     public void attachView(BucketMVP.View view) {
         super.attachView(view);
-        analyticsHelper.trackPageView(AnalyticsHelper.VIEW_BUCKET);
+        analyticsInterface.trackPageView(AnalyticsInterface.VIEW_BUCKET);
     }
 
     @Override
@@ -87,14 +87,14 @@ public final class BucketPresenter extends BasePresenter<BucketMVP.View>
 
     @Override
     public void onGetBucketSuccessTracking() {
-        analyticsHelper.trackGetBucketSuccess(null);
+        analyticsInterface.trackGetBucketSuccess(null);
     }
 
     @Override
     public void onGetBucketFailureTracking(Throwable e) {
         Bundle bundle = new Bundle();
-        bundle.putString(AnalyticsHelper.PARAM_MESSAGE, e.getMessage());
-        analyticsHelper.trackGetBucketFailure(bundle);
+        bundle.putString(AnalyticsInterface.PARAM_MESSAGE, e.getMessage());
+        analyticsInterface.trackGetBucketFailure(bundle);
     }
 
     @Override
@@ -118,14 +118,14 @@ public final class BucketPresenter extends BasePresenter<BucketMVP.View>
 
     @Override
     public void onDeleteTaskSuccessTracking() {
-        analyticsHelper.trackDeleteTaskSuccess(null);
+        analyticsInterface.trackDeleteTaskSuccess(null);
     }
 
     @Override
     public void onDeleteTaskFailureTracking(Throwable e) {
         Bundle bundle = new Bundle();
-        bundle.putString(AnalyticsHelper.PARAM_MESSAGE, e.getMessage());
-        analyticsHelper.trackDeleteFailure(bundle);
+        bundle.putString(AnalyticsInterface.PARAM_MESSAGE, e.getMessage());
+        analyticsInterface.trackDeleteFailure(bundle);
     }
 
     private final class GetBucketObserver extends DefaultObserver<BucketModel> {
