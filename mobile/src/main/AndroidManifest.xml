@@ -41,15 +41,24 @@
 
 
         <!-- Firebase Messaging (FCM)-->
-        <service android:name="com.cremy.firebucket.presentation.services.FirebucketMessagingService">
+        <service android:name=".firebase.services.FirebucketMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".presentation.services.FirebucketInstanceIDService">
+        <service android:name=".firebase.services.FirebucketInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <service
+            android:exported="false"
+            android:name=".firebase.services.ReminderService">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
+
     </application>
 </manifest>

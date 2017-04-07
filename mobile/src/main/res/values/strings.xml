@@ -22,6 +22,8 @@
     <string name="create_task_option_item_deadline_value_default">Today</string>
     <string name="create_task_option_item_priority_value_default">Normal</string>
     <string name="create_task_option_item_tags_value_default">No tag selected</string>
+    <string name="create_task_option_reminder_title">Reminder</string>
+    <string name="create_task_option_reminder_subtitle">Midnight on the chosen date</string>
 
     <!-- Login -->
     <string name="login">Login</string>

@@ -29,6 +29,7 @@ project.ext.ASSERTJ_VERSION = '2.6.0'
 project.ext.PLAY_SERVICES_VERSION = '9.0.0'
 
 project.ext.FIREBASE_VERSION = '10.2.1'
+project.ext.FIREBASE_JOB_DISPATCHER_VERSION = '0.6.0'
 
 project.ext.STICKY_HEADERS_LIB_VERSION = '0.4.3'
 

@@ -2,9 +2,9 @@ package com.cremy.firebucket.presentation.presenters.impl;
 
 import android.content.Context;
 
-import com.cremy.firebucket.analytics.AnalyticsInterface;
-import com.cremy.firebucket.config.ConfigInterface;
-import com.cremy.firebucket.config.FirebucketConfig;
+import com.cremy.firebucket.external.AnalyticsInterface;
+import com.cremy.firebucket.external.ConfigInterface;
+import com.cremy.firebucket.external.FirebucketConfig;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.user.CheckUserUseCase;
 import com.cremy.firebucket.presentation.presenters.OnBoardingMVP;

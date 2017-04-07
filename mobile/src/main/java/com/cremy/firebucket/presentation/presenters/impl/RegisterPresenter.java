@@ -3,7 +3,7 @@ package com.cremy.firebucket.presentation.presenters.impl;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.cremy.firebucket.analytics.AnalyticsInterface;
+import com.cremy.firebucket.external.AnalyticsInterface;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.user.LoginUserUseCase;
 import com.cremy.firebucket.domain.interactors.user.RegisterUserUseCase;

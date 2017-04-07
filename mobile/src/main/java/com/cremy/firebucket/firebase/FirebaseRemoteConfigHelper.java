@@ -2,8 +2,8 @@ package com.cremy.firebucket.firebase;
 
 import android.support.annotation.NonNull;
 
-import com.cremy.firebucket.config.ConfigInterface;
-import com.cremy.firebucket.config.FirebucketConfig;
+import com.cremy.firebucket.external.ConfigInterface;
+import com.cremy.firebucket.external.FirebucketConfig;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;

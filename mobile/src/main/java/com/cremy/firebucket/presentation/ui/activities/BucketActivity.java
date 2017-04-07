@@ -3,17 +3,12 @@ package com.cremy.firebucket.presentation.ui.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 
 import com.cremy.firebucket.R;
 import com.cremy.firebucket.presentation.ui.base.BaseActivity;
-import com.cremy.firebucket.presentation.ui.base.BaseFragment;
 import com.cremy.firebucket.presentation.ui.fragments.BucketFragment;
-import com.cremy.firebucket.presentation.ui.fragments.LoginFragment;
-import com.cremy.greenrobotutils.library.ui.SnackBarUtils;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BucketActivity extends BaseActivity {
@@ -26,6 +21,17 @@ public class BucketActivity extends BaseActivity {
         Intent intent = new Intent(context, BucketActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         context.startActivity(intent);
+    }
+
+    /**
+     * Allows to get the intent to launch this activity from a notification
+     * With a given preselected category name
+     * @param context
+     */
+    public static Intent getIntentForNotification(Context context) {
+        Intent intent = new Intent(context, BucketActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
     }
 
     @Override

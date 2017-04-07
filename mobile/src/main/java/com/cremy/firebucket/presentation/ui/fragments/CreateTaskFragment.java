@@ -14,6 +14,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -99,6 +100,8 @@ public class CreateTaskFragment extends BaseFragment
     TextView textViewItemPrioritySubtitle;
     @BindView(R.id.textview_item_tags_subtitle)
     TextView textViewItemTagsSubtitle;
+    @BindView(R.id.switch_item_reminder)
+    SwitchCompat switchItemReminder;
 
     @OnClick(R.id.cta_speech)
     public void clickCtaSpeech() {
@@ -147,6 +150,7 @@ public class CreateTaskFragment extends BaseFragment
             this.showNoNetwork();
         }
     }
+
 
     @Override
     public void injectDependencies() {
@@ -313,6 +317,11 @@ public class CreateTaskFragment extends BaseFragment
         intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);
 
         speechRecognizer.startListening(intent);
+    }
+
+    @Override
+    public boolean isReminderSet() {
+        return switchItemReminder.isChecked();
     }
 
     @Override

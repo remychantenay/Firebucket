@@ -3,7 +3,7 @@ package com.cremy.firebucket.presentation.presenters.impl;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.cremy.firebucket.analytics.AnalyticsInterface;
+import com.cremy.firebucket.external.AnalyticsInterface;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.bucket.GetBucketUseCase;
 import com.cremy.firebucket.domain.interactors.task.DeleteTaskUseCase;

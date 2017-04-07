@@ -1,4 +1,4 @@
-package com.cremy.firebucket.analytics;
+package com.cremy.firebucket.external;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

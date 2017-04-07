@@ -5,11 +5,13 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.cremy.firebucket.App;
-import com.cremy.firebucket.analytics.AnalyticsInterface;
-import com.cremy.firebucket.config.ConfigInterface;
+import com.cremy.firebucket.external.AnalyticsInterface;
+import com.cremy.firebucket.external.ConfigInterface;
 import com.cremy.firebucket.di.app.component.AppComponent;
 import com.cremy.firebucket.di.scope.ApplicationScope;
+import com.cremy.firebucket.external.TaskReminderInterface;
 import com.cremy.firebucket.firebase.FirebaseAnalyticsHelper;
+import com.cremy.firebucket.firebase.FirebaseJobDispatcherHelper;
 import com.cremy.firebucket.firebase.FirebaseRemoteConfigHelper;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
@@ -77,6 +79,13 @@ public class AppModule {
     public ConfigInterface provideConfigHelper() {
         ConfigInterface configInterface = new FirebaseRemoteConfigHelper(FirebaseRemoteConfig.getInstance());
         return configInterface;
+    }
+
+    @Provides
+    @ApplicationScope
+    public TaskReminderInterface provideTaskReminderHelper() {
+        TaskReminderInterface taskReminderInterface = new FirebaseJobDispatcherHelper();
+        return taskReminderInterface;
     }
 
     @Provides

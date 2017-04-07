@@ -1,4 +1,4 @@
-package com.cremy.firebucket.config;
+package com.cremy.firebucket.external;
 
 /**
  * This class will enumerate the different config parameters for the app

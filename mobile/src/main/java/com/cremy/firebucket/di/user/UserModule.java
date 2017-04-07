@@ -2,8 +2,8 @@ package com.cremy.firebucket.di.user;
 
 import android.support.v4.app.Fragment;
 
-import com.cremy.firebucket.analytics.AnalyticsInterface;
-import com.cremy.firebucket.config.ConfigInterface;
+import com.cremy.firebucket.external.AnalyticsInterface;
+import com.cremy.firebucket.external.ConfigInterface;
 import com.cremy.firebucket.data.repositories.UserRepository;
 import com.cremy.firebucket.data.repositories.datasource.UserDataSourceRemote;
 import com.cremy.firebucket.domain.interactors.user.CheckUserUseCase;

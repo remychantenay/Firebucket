@@ -4,10 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.cremy.firebucket.App;
-import com.cremy.firebucket.analytics.AnalyticsInterface;
-import com.cremy.firebucket.config.ConfigInterface;
+import com.cremy.firebucket.external.AnalyticsInterface;
+import com.cremy.firebucket.external.ConfigInterface;
 import com.cremy.firebucket.di.app.module.AppModule;
 import com.cremy.firebucket.di.scope.ApplicationScope;
+import com.cremy.firebucket.external.TaskReminderInterface;
 import com.cremy.firebucket.utils.rx.RxEventBus;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -36,5 +37,6 @@ public interface AppComponent {
     FirebaseAuth firebaseAuth();
     AnalyticsInterface analyticsHelper();
     ConfigInterface configHelper();
+    TaskReminderInterface taskReminderHelper();
     SharedPreferences sharedPreferences();
 }

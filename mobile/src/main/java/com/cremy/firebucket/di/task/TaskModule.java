@@ -2,7 +2,7 @@ package com.cremy.firebucket.di.task;
 
 import android.support.v4.app.Fragment;
 
-import com.cremy.firebucket.analytics.AnalyticsInterface;
+import com.cremy.firebucket.external.AnalyticsInterface;
 import com.cremy.firebucket.data.repositories.TagListRepository;
 import com.cremy.firebucket.data.repositories.TaskRepository;
 import com.cremy.firebucket.data.repositories.datasource.TagListDataSourceRemote;
@@ -10,6 +10,7 @@ import com.cremy.firebucket.data.repositories.datasource.TaskDataSourceRemote;
 import com.cremy.firebucket.domain.interactors.taglist.GetTagListUseCase;
 import com.cremy.firebucket.domain.interactors.task.CreateTaskUseCase;
 import com.cremy.firebucket.domain.interactors.task.DeleteTaskUseCase;
+import com.cremy.firebucket.external.TaskReminderInterface;
 import com.cremy.firebucket.presentation.presenters.impl.CreateTaskPresenter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,10 +35,12 @@ public class TaskModule {
     @Provides
     CreateTaskPresenter provideCreateTaskPresenter(GetTagListUseCase getTagListUseCase,
                                                    CreateTaskUseCase createTaskUseCase,
-                                                   AnalyticsInterface analyticsInterface) {
+                                                   AnalyticsInterface analyticsInterface,
+                                                   TaskReminderInterface taskReminderInterface) {
         return new CreateTaskPresenter(getTagListUseCase,
                 createTaskUseCase,
-                analyticsInterface);
+                analyticsInterface,
+                taskReminderInterface);
     }
 
     @Provides

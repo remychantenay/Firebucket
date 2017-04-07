@@ -1,4 +1,4 @@
-package com.cremy.firebucket.presentation.services;
+package com.cremy.firebucket.firebase.services;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;

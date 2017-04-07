@@ -2,13 +2,15 @@ package com.cremy.firebucket.presentation.presenters.impl;
 
 import android.os.Bundle;
 
-import com.cremy.firebucket.analytics.AnalyticsInterface;
 import com.cremy.firebucket.domain.interactors.Params;
 import com.cremy.firebucket.domain.interactors.taglist.GetTagListUseCase;
 import com.cremy.firebucket.domain.interactors.task.CreateTaskUseCase;
 import com.cremy.firebucket.domain.models.TagListModel;
 import com.cremy.firebucket.domain.models.TaskModel;
 import com.cremy.firebucket.domain.models.TaskPriorityModel;
+import com.cremy.firebucket.external.AnalyticsInterface;
+import com.cremy.firebucket.external.TaskReminderInterface;
+import com.cremy.firebucket.firebase.services.ReminderService;
 import com.cremy.firebucket.presentation.presenters.CreateTaskMVP;
 import com.cremy.firebucket.presentation.presenters.base.BasePresenter;
 import com.cremy.firebucket.rx.DefaultObserver;
@@ -25,17 +27,20 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
         implements CreateTaskMVP.Presenter {
     private final static String TAG = CreateTaskPresenter.class.getName();
 
-    private final AnalyticsInterface analyticsInterface;
     private final GetTagListUseCase getTagListUseCase;
     private final CreateTaskUseCase createTaskUseCase;
+    private final AnalyticsInterface analyticsInterface;
+    private final TaskReminderInterface taskReminderInterface;
 
     @Inject
     public CreateTaskPresenter(GetTagListUseCase getTagListUseCase,
                                CreateTaskUseCase createTaskUseCase,
-                               AnalyticsInterface analyticsInterface) {
+                               AnalyticsInterface analyticsInterface,
+                               TaskReminderInterface taskReminderInterface) {
         this.getTagListUseCase = getTagListUseCase;
         this.createTaskUseCase = createTaskUseCase;
         this.analyticsInterface = analyticsInterface;
+        this.taskReminderInterface = taskReminderInterface;
     }
 
     @Override
@@ -109,11 +114,12 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
         params.putInt(CreateTaskUseCase.PARAMS_KEY_PRIORITY_ID, idPriority);
         params.putString(CreateTaskUseCase.PARAMS_KEY_PRIORITY_LABEL, TaskPriorityModel.getResourceLabel(view.getContext(), idPriority));
 
-        createTaskUseCase.execute(new CreateTaskPresenter.GetCreateTaskObserver(), params);
+        createTaskUseCase.execute(new CreateTaskPresenter.CreateTaskObserver(), params);
     }
 
     @Override
-    public void onCreateTaskSuccess() {
+    public void onCreateTaskSuccess(TaskModel taskModel) {
+        setReminder(taskModel);
         checkViewAttached();
         view.hideLoading();
         view.onSuccess();
@@ -141,6 +147,22 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
         analyticsInterface.trackCreateTaskFailure(bundle);
     }
 
+    @Override
+    public void setReminder(TaskModel taskModel) {
+        checkViewAttached();
+        if (view.isReminderSet()) {
+            Bundle extras = new Bundle();
+            extras.putString(ReminderService.BUNDLE_KEY_TASK_TITLE, taskModel.getTitle());
+            extras.putString(ReminderService.BUNDLE_KEY_TASK_PRIORITY, taskModel.getPriority().getLabel());
+            extras.putString(ReminderService.BUNDLE_KEY_TASK_TAG, taskModel.getTag());
+
+            taskReminderInterface.setTaskReminder(view.getContext(),
+                    taskModel.getId(),
+                    3,
+                    extras);
+        }
+    }
+
     private final class GetTagListObserver extends DefaultObserver<TagListModel> {
 
         @Override public void onComplete() {
@@ -160,7 +182,7 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
         }
     }
 
-    private final class GetCreateTaskObserver extends DefaultObserver<TaskModel> {
+    private final class CreateTaskObserver extends DefaultObserver<TaskModel> {
 
         @Override public void onComplete() {
             super.onComplete();
@@ -175,7 +197,7 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
         @Override public void onNext(TaskModel taskModel) {
             super.onNext(taskModel);
             onCreateTaskSuccessTracking(taskModel);
-            onCreateTaskSuccess();
+            onCreateTaskSuccess(taskModel);
         }
     }
 }

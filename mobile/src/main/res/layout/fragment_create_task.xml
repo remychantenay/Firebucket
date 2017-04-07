@@ -198,5 +198,45 @@
             </LinearLayout>
         </FrameLayout>
 
+        <FrameLayout
+            style="@style/CreateTaskOptionItemLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CreateTaskOptionItemIcon"
+                    android:src="@drawable/ic_alarm_grey_400" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/material_design_keyline_one"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/CreateTaskOptionItemTitle"
+                        android:text="@string/create_task_option_reminder_title" />
+
+                    <TextView
+                        style="@style/CreateTaskOptionItemSubtitle"
+                        android:text="@string/create_task_option_reminder_subtitle" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/switch_item_reminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right" />
+        </FrameLayout>
+
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
