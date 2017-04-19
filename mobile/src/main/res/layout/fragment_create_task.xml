@@ -199,6 +199,7 @@
         </FrameLayout>
 
         <FrameLayout
+            android:id="@+id/container_item_reminder"
             style="@style/CreateTaskOptionItemLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -210,6 +211,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/imageview_item_reminder_icon"
                     style="@style/CreateTaskOptionItemIcon"
                     android:src="@drawable/ic_alarm_grey_400" />
 
@@ -221,10 +223,12 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/textview_item_reminder_title"
                         style="@style/CreateTaskOptionItemTitle"
                         android:text="@string/create_task_option_reminder_title" />
 
                     <TextView
+                        android:id="@+id/textview_item_reminder_subtitle"
                         style="@style/CreateTaskOptionItemSubtitle"
                         android:text="@string/create_task_option_reminder_subtitle" />
                 </LinearLayout>

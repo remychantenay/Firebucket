@@ -8,6 +8,7 @@ import com.cremy.firebucket.domain.models.TaskModel;
 import com.cremy.firebucket.presentation.ui.base.BaseMvpView;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by remychantenay on 08/05/2016.
@@ -24,9 +25,11 @@ public interface CreateTaskMVP {
         void showTagListError();
 
         void initDeadlineDatePicker();
+        void initReminderTimePicker();
         void startVoiceRecognition();
 
         boolean isReminderSet();
+        Date getReminderDate();
     }
 
     interface Presenter {

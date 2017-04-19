@@ -45,7 +45,7 @@
     <string name="error_login_invalid_email">Please provide a valid email address</string>
     <string name="error_login_invalid_password">Please provide a valid password</string>
     <string name="error_create_task">Oops, something went wrong while creating the task.</string>
-    <string name="error_create_task_date_picking_too_early">Only Marty McFly can come back in the past.</string>
+    <string name="error_create_task_date_picking_too_early">Only Marty McFly can go back in the past.</string>
     <string name="error_create_task_invalid_title">Please, provide a title for the task.</string>
     <string name="error_create_task_voice_recognition_error_code">Oops, error %1$d</string>
     <string name="error_create_task_voice_recognition">Oops, something went wrong while trying to understand what you said.</string>

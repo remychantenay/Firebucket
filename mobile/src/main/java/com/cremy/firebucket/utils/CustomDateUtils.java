@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.cremy.firebucket.R;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -111,4 +112,19 @@ public class CustomDateUtils {
         }
     }
 
+    /**
+     * Allows to get a display time with a given hour and minute
+     * @param hourOfDay
+     * @param minute
+     * @return
+     */
+    public static String getDisplayTime(int hourOfDay,
+                                        int minute) {
+        DateFormat dateFormat = new SimpleDateFormat("h:mm a");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        calendar.set(Calendar.MINUTE, minute);
+
+        return dateFormat.format(calendar.getTime());
+    }
 }

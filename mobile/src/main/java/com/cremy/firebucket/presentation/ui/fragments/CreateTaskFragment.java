@@ -1,6 +1,7 @@
 package com.cremy.firebucket.presentation.ui.fragments;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,11 +22,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.ScaleAnimation;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.cremy.firebucket.App;
 import com.cremy.firebucket.R;
@@ -43,6 +46,7 @@ import com.cremy.greenrobotutils.library.util.NetworkUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -56,7 +60,7 @@ import butterknife.OnClick;
  * create an instance of this fragment.
  */
 public class CreateTaskFragment extends BaseFragment
-        implements CreateTaskMVP.View {
+        implements CreateTaskMVP.View, CompoundButton.OnCheckedChangeListener, TimePickerDialog.OnTimeSetListener {
 
     public static final String TAG = CreateTaskFragment.class.getName();
 
@@ -67,6 +71,9 @@ public class CreateTaskFragment extends BaseFragment
     private int startMonth;
     private int startDay;
     private int idPriority = TaskPriorityModel.PRIORITY_NORMAL_ID;
+
+    private int reminderHourOfDay;
+    private int reminderMinute;
 
     @Inject
     CreateTaskPresenter presenter;
@@ -100,6 +107,13 @@ public class CreateTaskFragment extends BaseFragment
     TextView textViewItemPrioritySubtitle;
     @BindView(R.id.textview_item_tags_subtitle)
     TextView textViewItemTagsSubtitle;
+
+    @BindView(R.id.imageview_item_reminder_icon)
+    ImageView imageviewItemReminderIcon;
+    @BindView(R.id.textview_item_reminder_title)
+    TextView textviewItemReminderTitle;
+    @BindView(R.id.textview_item_reminder_subtitle)
+    TextView textviewItemReminderSubtitle;
     @BindView(R.id.switch_item_reminder)
     SwitchCompat switchItemReminder;
 
@@ -125,6 +139,14 @@ public class CreateTaskFragment extends BaseFragment
     public void clickContainerItemDeadline() {
         DatePickerDialog dialog = new DatePickerDialog(getContext(), this, startYear, startMonth, startDay);
         dialog.show();
+    }
+
+    @OnClick(R.id.container_item_reminder)
+    public void clickContainerItemReminder() {
+        if (switchItemReminder.isChecked()) {
+            TimePickerDialog dialog = new TimePickerDialog(getContext(), this, reminderHourOfDay, reminderMinute, true);
+            dialog.show();
+        }
     }
 
     @SuppressWarnings("ResourceType")
@@ -208,7 +230,11 @@ public class CreateTaskFragment extends BaseFragment
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initDeadlineDatePicker();
+        initReminderTimePicker();
         textViewItemPrioritySubtitle.setText(TaskPriorityModel.getResourceLabel(getContext(), idPriority));
+
+        switchItemReminder.setOnCheckedChangeListener(this);
+        setReminderDisabled();
     }
 
     @Override
@@ -305,6 +331,15 @@ public class CreateTaskFragment extends BaseFragment
     }
 
     @Override
+    public void initReminderTimePicker() {
+        this.reminderHourOfDay = 8;
+        this.reminderMinute = 0;
+
+        this.textviewItemReminderSubtitle.setText(CustomDateUtils.getDisplayTime(reminderHourOfDay,
+                reminderMinute));
+    }
+
+    @Override
     public void startVoiceRecognition() {
 
         // We start the speech recognizer intent
@@ -322,6 +357,11 @@ public class CreateTaskFragment extends BaseFragment
     @Override
     public boolean isReminderSet() {
         return switchItemReminder.isChecked();
+    }
+
+    @Override
+    public Date getReminderDate() {
+        return calendar.getTime();
     }
 
     @Override
@@ -389,15 +429,48 @@ public class CreateTaskFragment extends BaseFragment
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, monthOfYear, dayOfMonth);
         if (!CustomDateUtils.isBeforeToday(calendar)) {
-            this.calendar = calendar;
-            this.startYear = year;
-            this.startMonth = monthOfYear;
-            this.startDay = dayOfMonth;
+            startYear = year;
+            startMonth = monthOfYear;
+            startDay = dayOfMonth;
+
+            calendar.set(startYear, startMonth, startDay);
 
             final String displayedDeadline = CustomDateUtils.getDisplayDate(getContext(), calendar);
-            this.textViewItemDeadlineSubtitle.setText(displayedDeadline);
+            textViewItemDeadlineSubtitle.setText(displayedDeadline);
         } else {
             this.showMessage(getResources().getString(R.string.error_create_task_date_picking_too_early));
+        }
+    }
+
+    @Override
+    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+        reminderHourOfDay = hour;
+        reminderMinute = minute;
+
+        calendar.set(startYear, startMonth, startDay);
+        calendar.set(Calendar.HOUR_OF_DAY, reminderHourOfDay);
+        calendar.set(Calendar.MINUTE, reminderMinute);
+        textviewItemReminderSubtitle.setText(CustomDateUtils.getDisplayTime(hour, minute));
+    }
+
+    private void setReminderEnabled() {
+        imageviewItemReminderIcon.setAlpha(1f);
+        textviewItemReminderTitle.setAlpha(1f);
+        textviewItemReminderSubtitle.setAlpha(1f);
+    }
+
+    private void setReminderDisabled() {
+        imageviewItemReminderIcon.setAlpha(0.2f);
+        textviewItemReminderTitle.setAlpha(0.2f);
+        textviewItemReminderSubtitle.setAlpha(0.2f);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+        if (isChecked) {
+            setReminderEnabled();
+        } else {
+            setReminderDisabled();
         }
     }
 }

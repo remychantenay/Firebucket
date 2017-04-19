@@ -151,6 +151,10 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
     public void setReminder(TaskModel taskModel) {
         checkViewAttached();
         if (view.isReminderSet()) {
+            long reminderMs = view.getReminderDate().getTime();
+            long nowMs = Calendar.getInstance().getTime().getTime();
+            int diffSecs = (int) ((reminderMs - nowMs) / 1000);
+
             Bundle extras = new Bundle();
             extras.putString(ReminderService.BUNDLE_KEY_TASK_TITLE, taskModel.getTitle());
             extras.putString(ReminderService.BUNDLE_KEY_TASK_PRIORITY, taskModel.getPriority().getLabel());
@@ -158,7 +162,7 @@ public final class CreateTaskPresenter extends BasePresenter<CreateTaskMVP.View>
 
             taskReminderInterface.setTaskReminder(view.getContext(),
                     taskModel.getId(),
-                    3,
+                    diffSecs,
                     extras);
         }
     }
