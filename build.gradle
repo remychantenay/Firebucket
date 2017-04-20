@@ -5,8 +5,8 @@ project.ext.LIBRARY_BUILD_VARIANT = "debug" // TO CHANGE MANUALLY
 project.ext.PACKAGE_NAME="com.cremy.firebucket"
 project.ext.PACKAGE_NAME_DEV_SUFFIX=".d"
 
-project.ext.VERSION_CODE_MOBILE = 2000
-project.ext.VERSION_NAME_MOBILE = "2.0"
+project.ext.VERSION_CODE_MOBILE = 2100
+project.ext.VERSION_NAME_MOBILE = "2.1"
 
 project.ext.DAGGER_VERSION = '2.9'
 project.ext.GSON_VERSION = '2.6.2'

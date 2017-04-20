@@ -52,7 +52,7 @@ public class FirebaseJobDispatcherHelper implements TaskReminderInterface {
                 .setTag(taskId)
                 .setRecurring(false)
                 .setLifetime(Lifetime.FOREVER)
-                .setTrigger(Trigger.executionWindow(startTimeFromNow, WINDOW))
+                .setTrigger(Trigger.executionWindow(startTimeFromNow, (startTimeFromNow+WINDOW)))
                 .setReplaceCurrent(true)
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 .setConstraints(Constraint.ON_ANY_NETWORK)
