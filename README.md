@@ -21,6 +21,7 @@ This project is nothing more than a way to play with what I've learn. I was also
 * Crash Report
 * Remote Config
 * Analytics
+* [FirebaseJobDispatcher](https://github.com/firebase/firebase-jobdispatcher-android)
 
 ## Tools
 * Firebase
