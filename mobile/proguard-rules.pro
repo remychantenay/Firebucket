@@ -92,7 +92,7 @@
 -keep interface com.android.gms.** { *; }
 -keep class com.google.android.gms.** { *; }
 -keep interface com.google.android.gms.** { *; }
-
+-dontwarn com.google.android.gms.**
 
 
 # Keep native methods
