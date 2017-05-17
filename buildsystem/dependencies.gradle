@@ -52,6 +52,7 @@ dependencies {
     compile "com.google.firebase:firebase-crash:$rootProject.FIREBASE_VERSION"
     compile "com.google.firebase:firebase-config:$rootProject.FIREBASE_VERSION"
     compile "com.google.firebase:firebase-messaging:$rootProject.FIREBASE_VERSION"
+    compile "com.google.firebase:firebase-perf:$rootProject.FIREBASE_VERSION"
     compile "com.firebase:firebase-jobdispatcher-with-gcm-dep:$rootProject.FIREBASE_JOB_DISPATCHER_VERSION"
     //endregion
 

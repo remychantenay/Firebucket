@@ -5,13 +5,13 @@ project.ext.LIBRARY_BUILD_VARIANT = "debug" // TO CHANGE MANUALLY
 project.ext.PACKAGE_NAME="com.cremy.firebucket"
 project.ext.PACKAGE_NAME_DEV_SUFFIX=".d"
 
-project.ext.VERSION_CODE_MOBILE = 2100
-project.ext.VERSION_NAME_MOBILE = "2.1"
+project.ext.VERSION_CODE_MOBILE = 2200
+project.ext.VERSION_NAME_MOBILE = "2.2"
 
 project.ext.DAGGER_VERSION = '2.9'
 project.ext.GSON_VERSION = '2.6.2'
 project.ext.BUTTERKNIFE_VERSION = '8.5.1'
-project.ext.RXJAVA_VERSION = '2.0.8'
+project.ext.RXJAVA_VERSION = '2.1.0'
 project.ext.JAVA_POET_VERSION = '1.7.0'
 project.ext.RXANDROID_VERSION = '2.0.1'
 project.ext.SUPPORT_LIBRARY_VERSION = '25.1.0'
@@ -28,7 +28,7 @@ project.ext.ASSERTJ_VERSION = '2.6.0'
 
 project.ext.PLAY_SERVICES_VERSION = '9.0.0'
 
-project.ext.FIREBASE_VERSION = '10.2.1'
+project.ext.FIREBASE_VERSION = '10.2.6'
 project.ext.FIREBASE_JOB_DISPATCHER_VERSION = '0.6.0'
 
 project.ext.STICKY_HEADERS_LIB_VERSION = '0.4.3'
@@ -40,7 +40,7 @@ buildscript {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.android.tools.build:gradle:2.3.2'
         classpath 'com.google.gms:google-services:3.0.0'
     }
 }
