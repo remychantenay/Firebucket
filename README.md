@@ -22,6 +22,7 @@ This project is nothing more than a way to play with what I've learn. I was also
 * Remote Config
 * Analytics
 * [FirebaseJobDispatcher](https://github.com/firebase/firebase-jobdispatcher-android)
+* Performance (introduced during the Google IO 17)
 
 ## Tools
 * Firebase
