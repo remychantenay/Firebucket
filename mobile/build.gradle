@@ -34,9 +34,9 @@ android {
         targetSdkVersion 23
         multiDexEnabled true
 
-        applicationId rootProject.PACKAGE_NAME
-        versionCode rootProject.VERSION_CODE_MOBILE
-        versionName rootProject.VERSION_NAME_MOBILE
+        applicationId rootProject.CONFIG_PACKAGE_NAME
+        versionCode rootProject.CONFIG_VERSION_CODE_MOBILE
+        versionName rootProject.CONFIG_VERSION_NAME_MOBILE
         // Test intrumentation runner
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -50,7 +50,7 @@ android {
         }
 
         debug {
-            versionNameSuffix = rootProject.PACKAGE_NAME_DEV_SUFFIX
+            versionNameSuffix = rootProject.CONFIG_PACKAGE_NAME_DEV_SUFFIX
 
             shrinkResources false
             minifyEnabled false
