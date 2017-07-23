@@ -1,37 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-project.ext.LIBRARY_BUILD_VARIANT = "debug" // TO CHANGE MANUALLY
+ext {
+    CONFIG_LIBRARY_BUILD_VARIANT = "debug"
 
-project.ext.PACKAGE_NAME="com.cremy.firebucket"
-project.ext.PACKAGE_NAME_DEV_SUFFIX=".d"
+    CONFIG_PACKAGE_NAME="com.cremy.firebucket"
+    CONFIG_PACKAGE_NAME_DEV_SUFFIX=".d"
 
-project.ext.VERSION_CODE_MOBILE = 2200
-project.ext.VERSION_NAME_MOBILE = "2.2"
-
-project.ext.DAGGER_VERSION = '2.9'
-project.ext.GSON_VERSION = '2.6.2'
-project.ext.BUTTERKNIFE_VERSION = '8.5.1'
-project.ext.RXJAVA_VERSION = '2.1.1'
-project.ext.JAVA_POET_VERSION = '1.7.0'
-project.ext.RXANDROID_VERSION = '2.0.1'
-project.ext.SUPPORT_LIBRARY_VERSION = '25.1.0'
-project.ext.GREEN_ROBOT_UTILS_VERSION = '1.1.6'
-
-project.ext.HAMCREST_VERSION = '1.3'
-project.ext.JUNIT_VERSION = '4.12'
-project.ext.MOCKITO_VERSION = '1.10.5'
-project.ext.DEXMAKER_VERSION = '1.4'
-project.ext.ESPRESSO_VERSION = '2.2.1'
-project.ext.RUNNER_VERSION = '0.4'
-project.ext.GLASSFISH_JAVAX_ANNOTATION = '10.0-b28'
-project.ext.ASSERTJ_VERSION = '2.6.0'
-
-project.ext.PLAY_SERVICES_VERSION = '9.0.0'
-
-project.ext.FIREBASE_VERSION = '10.2.6'
-project.ext.FIREBASE_JOB_DISPATCHER_VERSION = '0.6.0'
-
-project.ext.STICKY_HEADERS_LIB_VERSION = '0.4.3'
+    CONFIG_VERSION_CODE_MOBILE = 2200
+    CONFIG_VERSION_NAME_MOBILE = "2.2"
+}
 
 buildscript {
     repositories {

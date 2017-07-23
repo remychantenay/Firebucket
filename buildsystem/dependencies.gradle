@@ -1,62 +1,90 @@
 // This gradle file must be applied in each module
 // e.g. "apply from: '../buildsystem/dependencies.gradle to the top of the build.gradle module files
+
+ext {
+    DAGGER_VERSION = '2.9'
+    GSON_VERSION = '2.6.2'
+    BUTTERKNIFE_VERSION = '8.5.1'
+    RXJAVA_VERSION = '2.1.1'
+    JAVA_POET_VERSION = '1.7.0'
+    RXANDROID_VERSION = '2.0.1'
+    SUPPORT_LIBRARY_VERSION = '25.1.0'
+    GREEN_ROBOT_UTILS_VERSION = '1.1.6'
+
+    HAMCREST_VERSION = '1.3'
+    JUNIT_VERSION = '4.12'
+    MOCKITO_VERSION = '1.10.5'
+    DEXMAKER_VERSION = '1.4'
+    ESPRESSO_VERSION = '2.2.1'
+    RUNNER_VERSION = '0.4'
+    GLASSFISH_JAVAX_ANNOTATION = '10.0-b28'
+    ASSERTJ_VERSION = '2.6.0'
+
+    PLAY_SERVICES_VERSION = '9.0.0'
+
+    FIREBASE_VERSION = '10.2.6'
+    FIREBASE_JOB_DISPATCHER_VERSION = '0.6.0'
+
+    STICKY_HEADERS_LIB_VERSION = '0.4.3'
+}
+
 dependencies {
 
     //region Java Poet
-    annotationProcessor "com.squareup:javapoet:$rootProject.JAVA_POET_VERSION"
+    annotationProcessor "com.squareup:javapoet:${JAVA_POET_VERSION}"
     //endregion
 
     //region Dagger2
-    def daggerCompiler = "com.google.dagger:dagger-compiler:$rootProject.DAGGER_VERSION"
+    def daggerCompiler = "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
     annotationProcessor daggerCompiler
     testAnnotationProcessor daggerCompiler
 
-    compile  "com.google.dagger:dagger:$rootProject.DAGGER_VERSION"
-    provided "org.glassfish:javax.annotation:$rootProject.GLASSFISH_JAVAX_ANNOTATION" //Required by Dagger2
+    compile  "com.google.dagger:dagger:${DAGGER_VERSION}"
+    provided "org.glassfish:javax.annotation:${GLASSFISH_JAVAX_ANNOTATION}" //Required by Dagger2
     //endregion
 
     //region Support libraries
-    compile "com.android.support:appcompat-v7:$rootProject.SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:design:$rootProject.SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:recyclerview-v7:$rootProject.SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:cardview-v7:$rootProject.SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:palette-v7:$rootProject.SUPPORT_LIBRARY_VERSION"
-    compile "com.android.support:support-annotations:$rootProject.SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:appcompat-v7:${SUPPORT_LIBRARY_VERSION}"
+    compile "com.android.support:design:${SUPPORT_LIBRARY_VERSION}"
+    compile "com.android.support:recyclerview-v7:${SUPPORT_LIBRARY_VERSION}"
+    compile "com.android.support:cardview-v7:${SUPPORT_LIBRARY_VERSION}"
+    compile "com.android.support:palette-v7:${SUPPORT_LIBRARY_VERSION}"
+    compile "com.android.support:support-annotations:${SUPPORT_LIBRARY_VERSION}"
     //endregion
 
     //region ButterKnife
-    compile ("com.jakewharton:butterknife:$rootProject.BUTTERKNIFE_VERSION") {
+    compile ("com.jakewharton:butterknife:${BUTTERKNIFE_VERSION}") {
         exclude module: 'support-annotations'
     }
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.BUTTERKNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${BUTTERKNIFE_VERSION}"
     //endregion
 
     //region RxJava, RxAndroid
-    compile "io.reactivex.rxjava2:rxandroid:$rootProject.RXANDROID_VERSION"
-    compile "io.reactivex.rxjava2:rxjava:$rootProject.RXJAVA_VERSION"
+    compile "io.reactivex.rxjava2:rxandroid:${RXANDROID_VERSION}"
+    compile "io.reactivex.rxjava2:rxjava:${RXJAVA_VERSION}"
     //endregion
 
     //region GreenRobotUtils
     // https://github.com/remychantenay/GreenRobotUtils
-    compile "com.github.remychantenay:greenrobotutils:$rootProject.GREEN_ROBOT_UTILS_VERSION"
+    compile "com.github.remychantenay:greenrobotutils:${GREEN_ROBOT_UTILS_VERSION}"
     //endregion
 
     //region StickyHeaders
-    compile "com.timehop.stickyheadersrecyclerview:library:${rootProject.STICKY_HEADERS_LIB_VERSION}@aar"
+    compile "com.timehop.stickyheadersrecyclerview:library:${STICKY_HEADERS_LIB_VERSION}@aar"
     //endregion
 
     //region Firebase
-    compile "com.google.firebase:firebase-core:$rootProject.FIREBASE_VERSION"
-    compile "com.google.firebase:firebase-database:$rootProject.FIREBASE_VERSION"
-    compile "com.google.firebase:firebase-auth:$rootProject.FIREBASE_VERSION"
-    compile "com.google.firebase:firebase-crash:$rootProject.FIREBASE_VERSION"
-    compile "com.google.firebase:firebase-config:$rootProject.FIREBASE_VERSION"
-    compile "com.google.firebase:firebase-messaging:$rootProject.FIREBASE_VERSION"
-    compile "com.google.firebase:firebase-perf:$rootProject.FIREBASE_VERSION"
-    compile "com.firebase:firebase-jobdispatcher-with-gcm-dep:$rootProject.FIREBASE_JOB_DISPATCHER_VERSION"
+    compile "com.google.firebase:firebase-core:${FIREBASE_VERSION}"
+    compile "com.google.firebase:firebase-database:${FIREBASE_VERSION}"
+    compile "com.google.firebase:firebase-auth:${FIREBASE_VERSION}"
+    compile "com.google.firebase:firebase-crash:${FIREBASE_VERSION}"
+    compile "com.google.firebase:firebase-config:${FIREBASE_VERSION}"
+    compile "com.google.firebase:firebase-messaging:${FIREBASE_VERSION}"
+    compile "com.google.firebase:firebase-perf:${FIREBASE_VERSION}"
+    compile "com.firebase:firebase-jobdispatcher-with-gcm-dep:${FIREBASE_JOB_DISPATCHER_VERSION}"
     //endregion
 
     //region GSON
-    compile "com.google.code.gson:gson:$rootProject.GSON_VERSION"
+    compile "com.google.code.gson:gson:${GSON_VERSION}"
     //endregion
 }
